@@ -33,7 +33,6 @@ export function requestFeeds() {
 }
 
 export function receiveFeeds(feeds) {
-    console.log('receive feeds', feeds);
     return {
         type: types.RECEIVE_FEEDS,
         feeds: feeds,

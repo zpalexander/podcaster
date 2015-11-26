@@ -33,7 +33,6 @@ export default function feeds(state = initialState, action) {
             break;
 
         case RECEIVE_FEEDS:
-            console.log(action.feeds);
             return Object.assign({}, state, {
                 feeds: action.feeds,
             });

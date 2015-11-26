@@ -4,17 +4,21 @@ class Sidebar extends Component {
 
     render() {
         const { feeds, actions } = this.props
-        return (
-            <section className="sidebar">
-                <ul>
-                {feeds.feeds.map(feed =>
-                    <li key={feed.feedID}>
-                        {feed.name}
-                    </li>
-                )}
-                </ul>
-            </section>
-        );
+        if (!feeds.feeds) {
+            return ( <div>No feeds</div>)
+        } else {
+            return (
+                <section className="sidebar">
+                    <ul>
+                    {feeds.feeds.map(feed =>
+                        <li key={feed.feedID}>
+                            {feed.name}
+                        </li>
+                    )}
+                    </ul>
+                </section>
+            );
+        }
     }
 };
 
