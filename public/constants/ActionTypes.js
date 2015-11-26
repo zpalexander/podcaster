@@ -8,3 +8,5 @@ export const RECEIVE_FEEDS = 'RECEIVE_FEEDS';
 
 // Episode actions
 export const TOGGLE_UNPLAYED = 'TOGGLE_UNPLAYED';
+export const REQUEST_EPISODES = 'REQUEST_EPISODES';
+export const RECEIVE_EPISODES = 'RECEIVE_EPISODES';

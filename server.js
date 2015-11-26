@@ -42,6 +42,7 @@ app.put('/feed/add', feed.addFeed);
 app.put('/feed/update', feed.updateContent);
 app.post('/feed/delete', feed.deleteFeed);
 // Episode
+app.get('/episodes/', episode.getEpisodes);
 app.post('/episode/toggleUnplayed', episode.toggleUnplayed);
 
 

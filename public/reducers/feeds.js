@@ -34,7 +34,7 @@ export default function feeds(state = initialState, action) {
 
         case RECEIVE_FEEDS:
             return Object.assign({}, state, {
-                feeds: action.feeds,
+                feeds: action.feeds
             });
             break;
 

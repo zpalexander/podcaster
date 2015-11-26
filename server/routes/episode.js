@@ -12,6 +12,20 @@ var Episode  = require('../models/Episode.js');
 
 
 /* Route Handlers */
+exports.getEpisodes = function(req, res) {
+    Episode.findAsync({})
+        .then(function(response) {
+            if (response.length > 0) {
+                res.send(response).status(200).end();
+            } else {
+                res.send('No episodes').status(404).end();
+            }
+        })
+        .catch(function(err) {
+            res.send(err).status(500).end();
+        });
+};
+
 exports.toggleUnplayed = function(req, res) {
     if (typeof req.body.unplayedStatus === 'string') {
         if (req.body.unplayedStatus === 'true') {

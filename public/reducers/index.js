@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import feeds from './feeds';
-import episode from './episode';
+import episodes from './episodes';
 
 const rootReducer = combineReducers({
     feeds,
-    episode
+    episodes
 });
 
 export default rootReducer;

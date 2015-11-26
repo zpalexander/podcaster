@@ -3,7 +3,7 @@ import React, { PropTypes, Component } from 'react';
 class Sidebar extends Component {
 
     render() {
-        const { feeds, actions } = this.props
+        const { feeds, actions } = this.props;
         if (!feeds.feeds) {
             return ( <div>No feeds</div>)
         } else {
