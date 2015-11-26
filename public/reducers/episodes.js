@@ -9,12 +9,10 @@ export default function episodes(state = initialState, action) {
             break;
 
         case REQUEST_EPISODES:
-            console.log('request episodes hit');
             return state;
             break;
 
         case RECEIVE_EPISODES:
-            console.log(action.episodes);
             return Object.assign({}, state, {
                 episodes: action.episodes
             });

@@ -21,7 +21,6 @@ class App extends Component {
 
     render() {
         const { feeds, episodes } = this.props;
-        console.log('in App.js', episodes);
         return (
             <div>
             <Sidebar feeds={feeds} />
