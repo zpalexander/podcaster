@@ -3,11 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchFeeds } from '../actions/feeds';
 import { fetchEpisodes } from '../actions/episodes';
+import { SHOW_ALL } from '../constants/Filters';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
-
-const SHOW_ALL = 'SHOW_ALL';
 
 class App extends Component {
     constructor(props) {

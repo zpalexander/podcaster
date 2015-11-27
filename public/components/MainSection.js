@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-
-const SHOW_ALL = 'SHOW_ALL';
+import { SHOW_ALL } from '../constants/Filters';
 
 class MainSection extends Component {
     constructor(props, context) {
@@ -26,7 +25,9 @@ class MainSection extends Component {
     }
 
     renderContent(filteredEpisodes) {
-
+        if (!filteredEpisodes) {
+            return ( <div>No Episodes</div> )
+        }
         if (filteredEpisodes.length !== 0) {
             return (
                 <ul>
