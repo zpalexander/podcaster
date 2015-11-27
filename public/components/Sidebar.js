@@ -11,7 +11,7 @@ class Sidebar extends Component {
                 <section className="sidebar">
                     <ul key="feeds">
                     {feeds.feeds.map(feed =>
-                        <li key={feed.feedID}>
+                        <li key={feed.id} onClick={this.props.filterHandler.bind(this, feed.id)} >
                             {feed.name}
                         </li>
                     )}
