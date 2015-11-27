@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchFeeds } from '../actions/feeds';
 import { fetchEpisodes } from '../actions/episodes';
 import Sidebar from '../components/Sidebar';
-//import Header from '../components/Header';
+import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 
 
@@ -24,7 +24,10 @@ class App extends Component {
         return (
             <div>
             <Sidebar feeds={feeds} />
-            <MainSection episodes={episodes} />
+            <div className="main">
+                <Header />
+                <MainSection episodes={episodes} />
+            </div>
             </div>
         )
     };

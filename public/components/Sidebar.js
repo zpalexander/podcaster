@@ -9,7 +9,7 @@ class Sidebar extends Component {
         } else {
             return (
                 <section className="sidebar">
-                    <ul>
+                    <ul key="feeds">
                     {feeds.feeds.map(feed =>
                         <li key={feed.feedID}>
                             {feed.name}
