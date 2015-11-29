@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import '!style!css!sass!../styles/styles.scss';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchFeeds } from '../actions/feeds';
