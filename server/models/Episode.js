@@ -4,8 +4,8 @@
  * Mongoose model for podcast feed episode
  */
 
-var mongoose = require('mongoose');
 var Promise  = require('bluebird');
+var mongoose = Promise.promisifyAll(require('mongoose'));
 
 var episodeSchema = new mongoose.Schema({
     name : {type : String},

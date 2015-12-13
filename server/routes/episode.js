@@ -13,7 +13,7 @@ var Episode  = require('../models/Episode.js');
 
 /* Route Handlers */
 exports.getEpisodes = function(req, res) {
-    Episode.findAsync({})
+    Episode.find({}).sort({pubDate: -1}).execAsync()
         .then(function(response) {
             if (response.length > 0) {
                 res.send(response).status(200).end();
