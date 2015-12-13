@@ -33,7 +33,7 @@ class MainSection extends Component {
             return (
                 <div>
                     {filteredEpisodes.map(episode =>
-                        <Episode episode={episode} />
+                        <Episode key={episode.name} episode={episode} />
                     )}
                 </div>
             )

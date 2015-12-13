@@ -9,10 +9,10 @@ class Sidebar extends Component {
 
 
     render() {
-        const { feeds, actions } = this.props;
+        const { feeds, actions, filter } = this.props;
         const allFeeds = {
-            id: SHOW_ALL,
-            name: 'Show All'
+            name: 'Show All',
+            id: SHOW_ALL
         };
 
         if (!feeds.feeds) {
@@ -20,9 +20,15 @@ class Sidebar extends Component {
         } else {
             return (
                 <section className="sidebar">
-                    <Feed key={SHOW_ALL} feed={allFeeds} filter={this.props.filterHandler} />
+                    <Feed key={allFeeds.id}
+                        feed={allFeeds}
+                        filterHandler={this.props.filterHandler}
+                        activeFilter={this.props.filter} />
                     {feeds.feeds.map(feed =>
-                        <Feed key={feed.id} feed={feed} filter={this.props.filterHandler} />
+                        <Feed key={feed.id}
+                            feed={feed}
+                            filterHandler={this.props.filterHandler}
+                            activeFilter={this.props.filter} />
                     )}
                 </section>
             );

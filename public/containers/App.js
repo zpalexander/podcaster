@@ -33,7 +33,7 @@ class App extends Component {
 
         return (
             <div>
-            <Sidebar feeds={feeds} filterHandler={self.filterEpisodes.bind(self)} />
+            <Sidebar feeds={feeds} filterHandler={self.filterEpisodes.bind(self)} filter={filter} />
             <div className="main">
                 <Header />
                 <MainSection episodes={episodes} filter={filter} />

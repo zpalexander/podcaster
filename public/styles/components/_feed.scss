@@ -1,0 +1,22 @@
+/**
+ * _feed.scss
+ *
+ * Styles for the Feed component
+ */
+
+.feed {
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background: #E6E6E6;
+    }
+
+    &.active {
+        background: #428bca;
+        color: white;
+        &:hover {
+            background: #428bca;
+        }
+    }
+}

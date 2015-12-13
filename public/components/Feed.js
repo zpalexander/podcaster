@@ -5,11 +5,20 @@ class Feed extends Component {
         super(props, context)
     };
 
+    buildClasses(feed, activeFilter) {
+        let classes = 'feed';
+        if (feed.id === activeFilter) {
+            classes += ' active';
+        }
+        return classes;
+    }
+
     render() {
-        const { feed, filter } = this.props;
+        const { feed, filterHandler, activeFilter } = this.props;
+        let classes = this.buildClasses(feed, activeFilter);
 
         return(
-            <div className="feed" onClick={this.props.filter.bind(this, feed.id)} >
+            <div className={classes} onClick={this.props.filterHandler.bind(this, feed.id)} >
                 {feed.name}
             </div>
         );
