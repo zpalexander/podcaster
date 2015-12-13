@@ -12,7 +12,7 @@ var episodeSchema = new mongoose.Schema({
     feed: {type: String},
     feedName: {type: String},
     description: {type: String},
-    url :  {type : String},
+    url:  {type : String},
     pubDate: {type: Date},
     playPosition: {type: Number},
     unplayed: {type: Boolean},

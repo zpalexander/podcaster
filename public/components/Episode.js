@@ -6,11 +6,16 @@ class Episode extends Component {
         super(props, context)
     };
 
-    buildClasses(episode) {
-        let classNames = 'episode';
+    buildActionClasses(episode) {
+        let classNames = 'episode-info';
         if (episode.unplayed) {
             classNames += ' unplayed';
         }
+        return classNames;
+    };
+
+    buildDetailsClasses() {
+        let classNames = 'episode-details';
         return classNames;
     };
 
@@ -21,14 +26,25 @@ class Episode extends Component {
 
     render() {
         const { episode } = this.props;
-        let classes = this.buildClasses(episode);
+        let actionClasses = this.buildActionClasses(episode);
+        let detailsClasses = this.buildDetailsClasses();
+        let sourceURL = episode.url;
+
         let date = this.renderDate(episode.pubDate);
 
         return (
-            <div className={classes}>
-                <span className="feed-name">{episode.feedName}</span>
-                <span className="episode-name">{episode.name}</span>
-                <span className="date">{date}</span>
+            <div className="episode-wrapper">
+                <div className={actionClasses}>
+                    <span className="feed-name">{episode.feedName}</span>
+                    <span className="episode-name">{episode.name}</span>
+                    <span className="date">{date}</span>
+                </div>
+                <div className={detailsClasses}>
+                    <audio controls preload="none">
+                        <source src={sourceURL} type="audio/mpeg"></source>
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
             </div>
         );
     }

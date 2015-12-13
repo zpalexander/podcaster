@@ -4,7 +4,7 @@
  * Styles for the Episode component
  */
 
-.episode {
+.episode-info {
     cursor: pointer;
     border-top: 1px solid #D3D3D3;
     padding: 2px 0;
@@ -31,5 +31,9 @@
     .date {
         float: right;
     }
+
+}
+
+.episode-details {
 
 }
