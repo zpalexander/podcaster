@@ -1,0 +1,22 @@
+/**
+ * _episode.scss
+ *
+ * Styles for the Episode component
+ */
+
+.episode {
+    cursor: pointer;
+
+    &:hover {
+        background: #D3D3D3;
+    }
+
+    .feed-name {
+        display: inline-block;
+        width: 15%;
+    }
+
+    .episode-name {
+    }
+
+}

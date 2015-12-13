@@ -25,12 +25,14 @@ exports.getFeeds = function(req, res) {
 }
 
 exports.updateContent = function(req, res) {
+    var feedName;
     var feedID = req.body.id;
     getFeedFromID(feedID)
         .then(function(feed) {
             if (feed === 404) {
                 res.send('404: Feed not found').status(404).end();
             } else {
+                feedName = feed[0].name;
                 return feedRead.getAsync(feed[0].url);
             }
         })
@@ -39,6 +41,7 @@ exports.updateContent = function(req, res) {
                 return new Episode({
                     name: episode.title,
                     feed: feedID,
+                    feedName: feedName,
                     description: episode.content,
                     url: episode.link,
                     pubDate: new Date(episode.published),

@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { SHOW_ALL } from '../constants/Filters';
+import Episode from './Episode';
 
 class MainSection extends Component {
     constructor(props, context) {
@@ -22,7 +23,7 @@ class MainSection extends Component {
             filteredEpisodes = episodes.episodes;
         }
         return filteredEpisodes;
-    }
+    };
 
     renderContent(filteredEpisodes) {
         if (!filteredEpisodes) {
@@ -30,25 +31,25 @@ class MainSection extends Component {
         }
         if (filteredEpisodes.length !== 0) {
             return (
-                <ul>
+                <div>
                     {filteredEpisodes.map(episode =>
-                        <li>{episode.name}</li>
+                        <Episode episode={episode} />
                     )}
-                </ul>
+                </div>
             )
         } else {
            return (
                <div>No episodes</div>
            )
         }
-    }
+    };
 
     render() {
         const { episodes } = this.props;
         var filteredEpisodes = this.filterEpisodes(episodes);
         var content = this.renderContent(filteredEpisodes);
         return (
-            <section className="main">
+            <section className="content">
                 { content }
             </section>
         )

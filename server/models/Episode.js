@@ -10,6 +10,7 @@ var Promise  = require('bluebird');
 var episodeSchema = new mongoose.Schema({
     name : {type : String},
     feed: {type: String},
+    feedName: {type: String},
     description: {type: String},
     url :  {type : String},
     pubDate: {type: Date},
