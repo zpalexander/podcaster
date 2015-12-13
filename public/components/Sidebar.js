@@ -20,6 +20,7 @@ class Sidebar extends Component {
         } else {
             return (
                 <section className="sidebar">
+                    <div className="add-feed">Add Content</div>
                     <Feed key={allFeeds.id}
                         feed={allFeeds}
                         filterHandler={this.props.filterHandler}
