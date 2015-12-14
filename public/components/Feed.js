@@ -18,7 +18,7 @@ class Feed extends Component {
         let classes = this.buildClasses(feed, activeFilter);
 
         return(
-            <div className={classes} onClick={this.props.filterHandler.bind(this, feed.id)} >
+            <div className={classes} onClick={filterHandler.bind(this, feed.id)} >
                 {feed.name}
             </div>
         );

@@ -30,7 +30,6 @@ class MainSection extends Component {
             return ( <div>No Episodes</div> )
         }
         if (filteredEpisodes.length !== 0) {
-            console.log(filteredEpisodes);
             return (
                 <div className="episodes">
                     {filteredEpisodes.map(episode =>

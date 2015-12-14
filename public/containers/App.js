@@ -3,8 +3,10 @@ import Bootstrap from 'bootstrap-sass-loader';
 import '!style!css!sass!../styles/styles.scss';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchFeeds } from '../actions/feeds';
-import { fetchEpisodes } from '../actions/episodes';
+// import { fetchFeeds } from '../actions/feeds';
+// import { fetchEpisodes, setActiveEpisode } from '../actions/episodes';
+import * as FeedActions from '../actions/feeds';
+import * as EpisodeActions from '../actions/episodes';
 import { SHOW_ALL } from '../constants/Filters';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -13,30 +15,32 @@ import MainSection from '../components/MainSection';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { filter: SHOW_ALL };
+        this.state = { activeFeed: SHOW_ALL };
     };
 
     componentDidMount() {
         const { dispatch } = this.props;
-        dispatch(fetchFeeds());
-        dispatch(fetchEpisodes());
+        dispatch(FeedActions.fetchFeeds());
+        dispatch(EpisodeActions.fetchEpisodes());
     };
 
     filterEpisodes(feedID) {
-        this.setState({filter: feedID});
+        this.setState({activeFeed: feedID});
     };
 
     render() {
         var self = this;
-        const { feeds, episodes } = self.props;
-        const { filter } = self.state;
+        const { feeds, episodes, activeFeed, activeEpisode, dispatch } = self.props;
+        let feedActions = bindActionCreators(FeedActions, dispatch);
 
         return (
             <div>
-            <Sidebar feeds={feeds} filterHandler={self.filterEpisodes.bind(self)} filter={filter} />
+            <Sidebar feeds={feeds}
+                filter={activeFeed}
+                {...feedActions} />
             <div className="main">
                 <Header />
-                <MainSection episodes={episodes} filter={filter} />
+                <MainSection episodes={episodes} filter={activeFeed} />
             </div>
             </div>
         )
@@ -51,7 +55,8 @@ function mapStateToProps(state) {
     return {
         feeds: state.feeds,
         episodes: state.episodes,
-        filter: state.filter
+        activeFeed: state.activeFeed,
+        activeEpisode: state.activeEpisode
     }
 }
 

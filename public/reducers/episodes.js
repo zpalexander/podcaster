@@ -1,8 +1,7 @@
 import { TOGGLE_UNPLAYED, REQUEST_EPISODES, RECEIVE_EPISODES } from '../constants/ActionTypes';
+import initialState from '../constants/InitialState';
 
-const initialState = [];
-
-export default function episodes(state = initialState, action) {
+export default function episodes(state = initialState.episodes, action) {
     switch(action.type) {
         case TOGGLE_UNPLAYED:
             return state;

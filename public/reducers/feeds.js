@@ -1,11 +1,10 @@
 import { ADD_FEED, UPDATE_FEED, DELETE_FEED, REQUEST_FEEDS, RECEIVE_FEEDS } from '../constants/ActionTypes';
+import initialState from '../constants/InitialState';
 
-const initialState = [];
-
-export default function feeds(state = initialState, action) {
+export default function feeds(state = initialState.feeds, action) {
     switch (action.type) {
         case ADD_FEED:
-            return [
+            return state.push(
                 {
                     feedID: action.feedID,
                     name: action.name,
@@ -13,13 +12,11 @@ export default function feeds(state = initialState, action) {
                     category: action.category
                 },
                 ...state
-            ];
+            );
             break;
 
         case UPDATE_FEED:
-            return [
-
-            ];
+            return state;
             break;
 
         case DELETE_FEED:

@@ -9,7 +9,7 @@ class Sidebar extends Component {
 
 
     render() {
-        const { feeds, actions, filter } = this.props;
+        const { feeds, actions, filter, setActiveFeed } = this.props;
         const allFeeds = {
             name: 'Show All',
             id: SHOW_ALL
@@ -23,13 +23,13 @@ class Sidebar extends Component {
                     <div className="add-feed">Add Content</div>
                     <Feed key={allFeeds.id}
                         feed={allFeeds}
-                        filterHandler={this.props.filterHandler}
-                        activeFilter={this.props.filter} />
+                        filterHandler={setActiveFeed}
+                        activeFilter={filter} />
                     {feeds.feeds.map(feed =>
                         <Feed key={feed.id}
                             feed={feed}
-                            filterHandler={this.props.filterHandler}
-                            activeFilter={this.props.filter} />
+                            filterHandler={setActiveFeed}
+                            activeFilter={filter} />
                     )}
                 </section>
             );
