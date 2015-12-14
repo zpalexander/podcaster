@@ -15,7 +15,7 @@ import MainSection from '../components/MainSection';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { activeFeed: SHOW_ALL };
+        this.state = { activeFeed: SHOW_ALL, activeEpisode: null };
     };
 
     componentDidMount() {
@@ -32,6 +32,7 @@ class App extends Component {
         var self = this;
         const { feeds, episodes, activeFeed, activeEpisode, dispatch } = self.props;
         let feedActions = bindActionCreators(FeedActions, dispatch);
+        let episodeActions = bindActionCreators(EpisodeActions, dispatch);
 
         return (
             <div>
@@ -40,7 +41,10 @@ class App extends Component {
                 {...feedActions} />
             <div className="main">
                 <Header />
-                <MainSection episodes={episodes} filter={activeFeed} />
+                <MainSection episodes={episodes}
+                    filter={activeFeed}
+                    activeEpisode={activeEpisode}
+                    {...episodeActions} />
             </div>
             </div>
         )

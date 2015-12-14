@@ -20,12 +20,12 @@ class EpActionBar extends Component {
 
 
     render() {
-        const { episode } = this.props;
+        const { episode, activeEpisodeHandler } = this.props;
         let actionClasses = this.buildActionClasses(episode);
         let date = this.renderDate(episode.pubDate);
 
         return (
-            <div className={actionClasses}>
+            <div className={actionClasses} onClick={activeEpisodeHandler.bind(this, episode._id)}>
                 <span className="feed-name">{episode.feedName}</span>
                 <span className="episode-name">{episode.name}</span>
                 <span className="date">{date}</span>

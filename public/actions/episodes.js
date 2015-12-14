@@ -14,6 +14,12 @@ export function setActiveEpisode(episode) {
     }
 }
 
+export function unsetActiveEpisode() {
+    return {
+        type: types.UNSET_ACTIVE_EPISODE
+    }
+}
+
 export function requestEpisodes() {
     return {
         type: types.REQUEST_EPISODES

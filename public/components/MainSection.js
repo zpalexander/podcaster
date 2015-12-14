@@ -25,7 +25,7 @@ class MainSection extends Component {
         return filteredEpisodes;
     };
 
-    renderContent(filteredEpisodes) {
+    renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode) {
         if (!filteredEpisodes) {
             return ( <div>No Episodes</div> )
         }
@@ -33,7 +33,11 @@ class MainSection extends Component {
             return (
                 <div className="episodes">
                     {filteredEpisodes.map(episode =>
-                        <Episode key={episode._id} episode={episode} />
+                        <Episode key={episode._id}
+                            episode={episode}
+                            activeEpisode={activeEpisode}
+                            setActiveEpisode={setActiveEpisode}
+                            unsetActiveEpisode={unsetActiveEpisode} />
                     )}
                 </div>
             )
@@ -45,9 +49,10 @@ class MainSection extends Component {
     };
 
     render() {
-        const { episodes } = this.props;
+        const { episodes, activeEpisode, setActiveEpisode, unsetActiveEpisode } = this.props;
+
         var filteredEpisodes = this.filterEpisodes(episodes);
-        var content = this.renderContent(filteredEpisodes);
+        var content = this.renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode);
         return (
             <section className="content">
                 { content }

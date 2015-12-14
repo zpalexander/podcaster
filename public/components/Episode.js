@@ -21,23 +21,52 @@ class Episode extends Component {
         return classNames;
     };
 
-
-    render() {
-        const { episode } = this.props;
-
-        let actionClasses = this.buildActionClasses(episode);
-        let detailsClasses = this.buildDetailsClasses(episode);
-
+    renderActiveEpisode(episode, activeEpisodeHandler, actionClasses, detailsClasses) {
         return (
             <div className="episode-wrapper">
                 <EpActionBar episode={episode}
                     actionClasses={actionClasses}
-                    detailsClasses={detailsClasses} />
+                    detailsClasses={detailsClasses}
+                    activeEpisodeHandler={activeEpisodeHandler} />
                 <EpDetails episode={episode}
                     actionClasses={actionClasses}
                     detailsClasses={detailsClasses} />
             </div>
-        );
+        )
+    };
+
+    renderNormalEpisode(episode, activeEpisodeHandler, actionClasses) {
+        return (
+            <div className="episode-wrapper">
+                <EpActionBar episode={episode}
+                    actionClasses={actionClasses}
+                    activeEpisodeHandler={activeEpisodeHandler} />
+            </div>
+        )
+    };
+
+    isActiveEpisode(episode, activeEpisode) {
+        if (episode._id === activeEpisode) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+
+    render() {
+        const { episode, activeEpisode, setActiveEpisode, unsetActiveEpisode } = this.props;
+
+        let actionClasses = this.buildActionClasses(episode);
+        let detailsClasses = this.buildDetailsClasses(episode);
+
+        let content = false;
+        if (this.isActiveEpisode(episode, activeEpisode)) {
+            content = this.renderActiveEpisode(episode, unsetActiveEpisode, actionClasses, detailsClasses)
+        } else {
+            content = this.renderNormalEpisode(episode, setActiveEpisode, actionClasses);
+        }
+        return content;
     }
 
 };
