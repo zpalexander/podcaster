@@ -31,7 +31,7 @@ class MainSection extends Component {
         }
         if (filteredEpisodes.length !== 0) {
             return (
-                <div className="episodes">
+                <div>
                     {filteredEpisodes.map(episode =>
                         <Episode key={episode._id}
                             episode={episode}

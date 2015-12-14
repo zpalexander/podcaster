@@ -15,7 +15,7 @@ class EpActionBar extends Component {
     };
 
     renderDate(rawDate) {
-        return moment(rawDate).format('ddd, hA');
+        return moment(rawDate).format('ddd, MMMM Do');
     };
 
 
