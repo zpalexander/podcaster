@@ -8,6 +8,7 @@ var Promise  = require('bluebird');
 var mongoose = Promise.promisifyAll(require('mongoose'));
 
 var episodeSchema = new mongoose.Schema({
+    id: {type: Number},
     name : {type : String},
     feed: {type: String},
     feedName: {type: String},

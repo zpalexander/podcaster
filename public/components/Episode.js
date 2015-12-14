@@ -1,5 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import moment from 'moment';
+import EpActionBar from './EpActionBar';
+import EpDetails from './EpDetails';
 
 class Episode extends Component {
     constructor(props, context) {
@@ -14,37 +16,26 @@ class Episode extends Component {
         return classNames;
     };
 
-    buildDetailsClasses() {
-        let classNames = 'episode-details';
+    buildDetailsClasses(episode) {
+        let classNames = 'episode-details ' + episode._id;
         return classNames;
-    };
-
-    renderDate(rawDate) {
-        return moment(rawDate).format('ddd, hA');
     };
 
 
     render() {
         const { episode } = this.props;
-        let actionClasses = this.buildActionClasses(episode);
-        let detailsClasses = this.buildDetailsClasses();
-        let sourceURL = episode.url;
 
-        let date = this.renderDate(episode.pubDate);
+        let actionClasses = this.buildActionClasses(episode);
+        let detailsClasses = this.buildDetailsClasses(episode);
 
         return (
             <div className="episode-wrapper">
-                <div className={actionClasses}>
-                    <span className="feed-name">{episode.feedName}</span>
-                    <span className="episode-name">{episode.name}</span>
-                    <span className="date">{date}</span>
-                </div>
-                <div className={detailsClasses}>
-                    <audio controls preload="none">
-                        <source src={sourceURL} type="audio/mpeg"></source>
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
+                <EpActionBar episode={episode}
+                    actionClasses={actionClasses}
+                    detailsClasses={detailsClasses} />
+                <EpDetails episode={episode}
+                    actionClasses={actionClasses}
+                    detailsClasses={detailsClasses} />
             </div>
         );
     }

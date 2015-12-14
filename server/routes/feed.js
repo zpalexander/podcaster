@@ -5,6 +5,7 @@
  */
 
 var Promise  = require('bluebird');
+// I should switch to node-feedparser
 var feedRead = Promise.promisifyAll(require('feed-read'));
 var Feed     = require('../models/Feed.js');
 var Episode  = require('../models/Episode.js');
@@ -30,15 +31,19 @@ exports.updateContent = function(req, res) {
     getFeedFromID(feedID)
         .then(function(feed) {
             if (feed === 404) {
-                res.send('404: Feed not found').status(404).end();
+                throw new Error('No feed');
             } else {
                 feedName = feed[0].name;
                 return feedRead.getAsync(feed[0].url);
             }
         })
         .then(function(episodes) {
+            console.log(episodes);
+            var i = -1;
             var feedEpisodes = episodes.map(function(episode) {
+                i++;
                 return new Episode({
+                    id: i,
                     name: episode.title,
                     feed: feedID,
                     feedName: feedName,
@@ -62,7 +67,7 @@ exports.updateContent = function(req, res) {
             }
         })
         .catch(function(err) {
-            throw err;
+            res.send('404: Feed not found').status(404).end();
         });
 };
 

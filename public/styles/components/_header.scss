@@ -1,0 +1,15 @@
+/**
+ * _header.scss
+ *
+ * Styles for Header components
+ */
+
+.header {
+    position: fixed;
+    background: white;
+    width: 100%;
+    z-index: 99;
+    margin-top: -20px;
+    height: 80px;
+    border-bottom: 1px solid #D3D3D3;
+}
