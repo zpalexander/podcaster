@@ -15,8 +15,8 @@
     var mongoose             = require('mongoose');
     // Route handlers
     var view                 = require('./server/routes/view');
-    var feed                 = require('./server/routes/feed');
-    var episode              = require('./server/routes/episode');
+    var feeds                 = require('./server/routes/feeds');
+    var episodes              = require('./server/routes/episodes');
 
 
     /* Initialize App Configuration */
@@ -40,14 +40,14 @@
     // View
     app.get('/', view.show);
     // Feed
-    app.get('/feeds/', feed.getFeeds);
-    app.get('/feed/:feedID', feed.getContent);
-    app.put('/feed/add', feed.addFeed);
-    app.put('/feed/update', feed.updateContent);
-    app.post('/feed/delete', feed.deleteFeed);
+    app.get('/feeds/', feeds.getFeeds);
+    app.get('/feed/:feedID', feeds.getContent);
+    app.put('/feed/add', feeds.addFeed);
+    app.put('/feed/update', feeds.updateContent);
+    app.post('/feed/delete', feeds.deleteFeed);
     // Episode
-    app.get('/episodes/', episode.getEpisodes);
-    app.post('/episode/toggleUnplayed', episode.toggleUnplayed);
+    app.get('/episodes/', episodes.get);
+    app.post('/episode/toggleUnplayed', episodes.toggleUnplayed);
 
 
     /* Start Server Listening */
