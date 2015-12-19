@@ -1,29 +1,5 @@
-import * as types from '../constants/ActionTypes'
-import fetch from 'isomorphic-fetch'
-
-// export function addFeed(feedID, name, url, category) {
-//     return {
-//         type: types.ADD_FEED,
-//         feedID,
-//         name,
-//         url,
-//         category
-//     }
-// }
-
-// export function updateFeed(feedID) {
-//     return {
-//         type: types.UPDATE_FEED,
-//         feedID
-//     }
-// }
-
-// export function deleteFeed(feedID) {
-//     return {
-//         type: types.DELETE_FEED,
-//         feedID
-//     }
-// }
+import * as types from '../constants/ActionTypes';
+import fetch from 'isomorphic-fetch';
 
 
 export function setActiveFeed(feed) {
@@ -42,7 +18,7 @@ export function requestFeeds() {
 export function receiveFeeds(feeds) {
     return {
         type: types.RECEIVE_FEEDS,
-        feeds: feeds,
+        feeds: feeds
     }
 };
 

@@ -4,11 +4,11 @@ import initialState from '../constants/InitialState';
 export default function activeEpisode(state = initialState.activeEpisode, action) {
     switch(action.type) {
         case SET_ACTIVE_EPISODE:
-            return state = action.episode;
+            return action.episode;
             break;
 
         case UNSET_ACTIVE_EPISODE:
-            return state = null;
+            return null;
             break;
 
         default:

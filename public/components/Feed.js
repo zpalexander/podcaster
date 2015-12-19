@@ -25,4 +25,10 @@ class Feed extends Component {
     };
 };
 
+Feed.propTypes = {
+    feed: PropTypes.object.isRequired,
+    filterHandler: PropTypes.func.isRequired,
+    activeFilter: PropTypes.string.isRequired
+};
+
 export default Feed;

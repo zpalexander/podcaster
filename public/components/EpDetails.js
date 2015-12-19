@@ -1,5 +1,10 @@
+/**
+ * EpDetails.js
+ *
+ * Episode Details tray component
+ */
+
 import React, { PropTypes, Component } from 'react';
-import moment from 'moment';
 
 class EpDetails extends Component {
     constructor(props, context) {
@@ -23,7 +28,11 @@ class EpDetails extends Component {
 
     }
 
+};
 
+EpDetails.propTypes = {
+    episode: PropTypes.object.isRequired,
+    detailsClasses: PropTypes.string.isRequired
 };
 
 export default EpDetails;

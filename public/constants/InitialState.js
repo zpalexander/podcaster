@@ -9,7 +9,7 @@ const initialState = {
     feeds: [],
     episodes: [],
     activeFeed: SHOW_ALL,
-    activeEpisode: null
+    activeEpisode: ''
 };
 
 export default initialState;

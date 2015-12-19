@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import moment from 'moment';
 import EpActionBar from './EpActionBar';
 import EpDetails from './EpDetails';
 
@@ -27,10 +26,12 @@ class Episode extends Component {
                 <EpActionBar episode={episode}
                     actionClasses={actionClasses}
                     detailsClasses={detailsClasses}
-                    activeEpisodeHandler={activeEpisodeHandler} />
+                    activeEpisodeHandler={activeEpisodeHandler}
+                />
                 <EpDetails episode={episode}
                     actionClasses={actionClasses}
-                    detailsClasses={detailsClasses} />
+                    detailsClasses={detailsClasses}
+                />
             </div>
         )
     };
@@ -40,17 +41,18 @@ class Episode extends Component {
             <div className="episode-wrapper">
                 <EpActionBar episode={episode}
                     actionClasses={actionClasses}
-                    activeEpisodeHandler={activeEpisodeHandler} />
+                    activeEpisodeHandler={activeEpisodeHandler}
+                />
             </div>
         )
     };
 
     isActiveEpisode(episode, activeEpisode) {
+        let isActive = false;
         if (episode._id === activeEpisode) {
-            return true;
-        } else {
-            return false;
+            isActive = true;
         }
+        return isActive;
     };
 
 
@@ -69,6 +71,13 @@ class Episode extends Component {
         return content;
     }
 
+};
+
+Episode.propTypes = {
+    episode: PropTypes.object.isRequired,
+    activeEpisode: PropTypes.string.isRequired,
+    setActiveEpisode: PropTypes.func.isRequired,
+    unsetActiveEpisode: PropTypes.func.isRequired
 };
 
 export default Episode;

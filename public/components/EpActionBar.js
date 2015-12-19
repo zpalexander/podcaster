@@ -33,6 +33,11 @@ class EpActionBar extends Component {
         );
     }
 
-}
+};
+
+EpActionBar.propTypes = {
+    episode: PropTypes.object.isRequired,
+    activeEpisodeHandler: PropTypes.func.isRequired
+};
 
 export default EpActionBar;

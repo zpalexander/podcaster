@@ -12,9 +12,7 @@ export default function episodes(state = initialState.episodes, action) {
             break;
 
         case RECEIVE_EPISODES:
-            return Object.assign({}, state, {
-                episodes: action.episodes
-            });
+            return action.episodes;
             break;
 
         default:

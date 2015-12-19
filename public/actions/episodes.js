@@ -29,7 +29,7 @@ export function requestEpisodes() {
 export function receiveEpisodes(episodes) {
     return {
         type: types.RECEIVE_EPISODES,
-        episodes: episodes,
+        episodes: episodes
     }
 }
 

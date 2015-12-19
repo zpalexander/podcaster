@@ -38,7 +38,6 @@ exports.updateContent = function(req, res) {
             }
         })
         .then(function(episodes) {
-            console.log(episodes);
             var i = -1;
             var feedEpisodes = episodes.map(function(episode) {
                 i++;
