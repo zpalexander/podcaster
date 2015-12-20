@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     /**
-     * refreshFeed.js
+     * refreshFeedEpisodes.js
      *
      * Logic to refresh a feed's episodes
      */

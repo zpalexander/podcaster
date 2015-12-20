@@ -6,15 +6,13 @@
      * Logic for feed operations
      */
 
-    var Promise  = require('bluebird');
     // I should switch to node-feedparser
-    var feedRead = Promise.promisifyAll(require('feed-read'));
     var Feed     = require('../models/Feed.js');
-    var Episode  = require('../models/Episode.js');
 
     /* Logic */
     var getFeeds = require('./feeds/getFeeds').get;
-    var refreshFeed = require('./feeds/refreshFeed').refresh;
+    var getFeedEpisodes = require('./feeds/getFeedEpisodes').get;
+    var refreshFeedEpisodes = require('./feeds/refreshFeedEpisodes').refresh;
     var getFeedFromID = require('./feeds/getFeedFromID').get;
 
     /* Route Handlers */
@@ -30,9 +28,9 @@
 
     exports.refreshEpisodes = function(req, res) {
         var feedID = req.body.id;
-        refreshFeed(feedID)
+        refreshFeedEpisodes(feedID)
             .then(function(result) {
-                res.send('Feed "' + feedID + '" refreshed successfully').status(200).end();;
+                res.send('Feed "' + feedID + '" refreshed successfully').status(result.status).end();;
             })
             .catch(function(err) {
                 res.send(err.message).status(err.status).end();
@@ -41,19 +39,12 @@
 
     exports.getEpisodes = function(req, res) {
         var feedID = req.params.feedID;
-        getFeedFromID(feedID)
-            .then(function(feed) {
-                if (feed === 404) {
-                    res.send('404: Feed not found').status(404).end();
-                } else {
-                    return Episode.findAsync({feed: feedID});
-                }
-            })
-            .then(function(episodes) {
-                res.send(episodes).end();
+        getFeedEpisodes(feedID)
+            .then(function(response) {
+                res.send(response.body).status(response.status).end();
             })
             .catch(function(err) {
-                throw err;
+                res.send(err.message).status(err.status).end();
             })
     };
 
@@ -88,21 +79,5 @@
             });
     };
 
-    /* Helper Functions */
-    // var getFeedFromID = function(id) {
-    //     return new Promise(function(resolve, reject) {
-    //         Feed.findAsync({'id': id})
-    //             .then(function(feed) {
-    //                 if (feed.length > 0) {
-    //                     resolve(feed);
-    //                 } else {
-    //                     resolve(404);
-    //                 }
-    //             })
-    //             .catch(function(err) {
-    //                 console.log(err);
-    //             });
-    //     });
-    // };
 
 })();
