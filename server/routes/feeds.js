@@ -14,6 +14,8 @@
 
     /* Logic */
     var getFeeds = require('./feeds/getFeeds').get;
+    var refreshFeed = require('./feeds/refreshFeed').refresh;
+    var getFeedFromID = require('./feeds/getFeedFromID').get;
 
     /* Route Handlers */
     exports.getFeeds = function(req, res) {
@@ -26,52 +28,18 @@
             });
     };
 
-    exports.updateContent = function(req, res) {
-        var feedName;
+    exports.refreshEpisodes = function(req, res) {
         var feedID = req.body.id;
-        getFeedFromID(feedID)
-            .then(function(feed) {
-                if (feed === 404) {
-                    throw new Error('No feed');
-                } else {
-                    feedName = feed[0].name;
-                    return feedRead.getAsync(feed[0].url);
-                }
-            })
-            .then(function(episodes) {
-                var i = -1;
-                var feedEpisodes = episodes.map(function(episode) {
-                    i++;
-                    return new Episode({
-                        id: i,
-                        name: episode.title,
-                        feed: feedID,
-                        feedName: feedName,
-                        description: episode.content,
-                        url: episode.link,
-                        pubDate: new Date(episode.published),
-                        playPosition: 0,
-                        unplayed: true
-                    });
-                });
-                return feedEpisodes;
-            })
-            .then(function(feedEpisodes) {
-                return Episode.createAsync(feedEpisodes);
-            })
+        refreshFeed(feedID)
             .then(function(result) {
-                if (result) {
-                    res.send('Episodes saved successfully').status(200).end();
-                } else {
-                    res.status(500).end();
-                }
+                res.send('Feed "' + feedID + '" refreshed successfully').status(200).end();;
             })
             .catch(function(err) {
-                res.send('404: Feed not found').status(404).end();
+                res.send(err.message).status(err.status).end();
             });
     };
 
-    exports.getContent = function(req, res) {
+    exports.getEpisodes = function(req, res) {
         var feedID = req.params.feedID;
         getFeedFromID(feedID)
             .then(function(feed) {
@@ -121,20 +89,20 @@
     };
 
     /* Helper Functions */
-    var getFeedFromID = function(id) {
-        return new Promise(function(resolve, reject) {
-            Feed.findAsync({'id': id})
-                .then(function(feed) {
-                    if (feed.length > 0) {
-                        resolve(feed);
-                    } else {
-                        resolve(404);
-                    }
-                })
-                .catch(function(err) {
-                    console.log(err);
-                });
-        });
-    };
+    // var getFeedFromID = function(id) {
+    //     return new Promise(function(resolve, reject) {
+    //         Feed.findAsync({'id': id})
+    //             .then(function(feed) {
+    //                 if (feed.length > 0) {
+    //                     resolve(feed);
+    //                 } else {
+    //                     resolve(404);
+    //                 }
+    //             })
+    //             .catch(function(err) {
+    //                 console.log(err);
+    //             });
+    //     });
+    // };
 
 })();
