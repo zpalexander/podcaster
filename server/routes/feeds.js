@@ -12,20 +12,19 @@
     var Feed     = require('../models/Feed.js');
     var Episode  = require('../models/Episode.js');
 
+    /* Logic */
+    var getFeeds = require('./feeds/getFeeds').get;
+
     /* Route Handlers */
     exports.getFeeds = function(req, res) {
-        Feed.findAsync({})
+        getFeeds()
             .then(function(response) {
-                if (response.length > 0) {
-                    res.send(response).status(200).end();
-                } else {
-                    res.send('No feeds').status(404).end();
-                }
+                res.send(response.message).status(response.status).end();
             })
             .catch(function(err) {
-                res.send(err).status(500).end();
+                res.send(err.message).status(err.status).end();
             });
-    }
+    };
 
     exports.updateContent = function(req, res) {
         var feedName;
