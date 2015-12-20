@@ -42,7 +42,7 @@
     // Feed
     app.get('/feeds/', feeds.getFeeds);
     app.get('/feed/:feedID', feeds.getEpisodes);
-    app.put('/feed/add', feeds.addFeed);
+    app.post('/feed/add', feeds.addFeed);
     app.post('/feed/update', feeds.refreshEpisodes);
     app.post('/feed/delete', feeds.deleteFeed);
     // Episode

@@ -14,6 +14,7 @@
     var getFeedEpisodes = require('./feeds/getFeedEpisodes').get;
     var refreshFeedEpisodes = require('./feeds/refreshFeedEpisodes').refresh;
     var getFeedFromID = require('./feeds/getFeedFromID').get;
+    var addFeed = require('./feeds/addFeed').add;
 
     /* Route Handlers */
     exports.getFeeds = function(req, res) {
@@ -49,23 +50,19 @@
     };
 
     exports.addFeed = function(req, res) {
-        var feed = new Feed({
+        var feedParams = {
             id: req.body.id,
             name: req.body.name,
             url: req.body.url,
             category: req.body.category
-        });
-        feed.saveAsync()
+        };
+        addFeed(feedParams)
             .then(function(result) {
-                if (result) {
-                    res.send('Feed saved successfully').status(200).end();
-                } else {
-                    res.status(500).end();
-                }
+                res.send('Feed "' + feedParams.name + '" saved successfully').status(result.status).end();
             })
             .catch(function(err) {
-                throw err;
-            })
+                res.send(err).status(500).end();
+            });
     };
 
     exports.deleteFeed = function(req, res) {
