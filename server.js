@@ -15,8 +15,8 @@
     var mongoose             = require('mongoose');
     // Route handlers
     var view                 = require('./server/routes/view');
-    var feeds                 = require('./server/routes/feeds');
-    var episodes              = require('./server/routes/episodes');
+    var feeds                = require('./server/routes/feeds');
+    var episodes             = require('./server/routes/episodes');
 
 
     /* Initialize App Configuration */
