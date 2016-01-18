@@ -9,7 +9,7 @@ import expect from 'expect';
 /* Files to be tested */
 var stringToBool = require('../../../server/util/stringToBool').default;
 
-describe('Utils: stringToBool', () => {
+describe('Backend - Utils: stringToBool', () => {
     it('should return a true boolean for the string \'true\'', () => {
         let input = 'true';
         let expectedResult = true;
