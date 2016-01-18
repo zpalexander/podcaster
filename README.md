@@ -1,3 +1,4 @@
-# podcaster
+# Podcaster
+[![Build Status](https://travis-ci.org/zpalexander/podcaster.svg?branch=develop)](https://travis-ci.org/zpalexander/podcaster)
 
-Attempt at a simple React + Redux + Node stack.
+A Podcast Catcher built with React + Redux + Node
