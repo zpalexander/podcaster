@@ -1,3 +1,9 @@
+/**
+ * index.js
+ *
+ * Entry point for all reducers
+ */
+
 import { combineReducers } from 'redux';
 import feeds from './feeds';
 import episodes from './episodes';

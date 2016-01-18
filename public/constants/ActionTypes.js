@@ -1,3 +1,9 @@
+/**
+ * ActionTypes.js
+ *
+ * Definition of all action types
+ */
+
 // Feed actions
 export const ADD_FEED = 'ADD_FEED';
 export const UPDATE_FEED = 'UPDATE_FEED';

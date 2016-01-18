@@ -1,6 +1,15 @@
+/**
+ * activeEpisode.js
+ *
+ * Reducer for the activeEpisode
+ * state property
+ */
+
+/* Constants */
 import { SET_ACTIVE_EPISODE, UNSET_ACTIVE_EPISODE } from '../constants/ActionTypes';
 import initialState from '../constants/InitialState';
 
+/* Reducer */
 export default function activeEpisode(state = initialState.activeEpisode, action) {
     switch(action.type) {
         case SET_ACTIVE_EPISODE:
@@ -15,4 +24,4 @@ export default function activeEpisode(state = initialState.activeEpisode, action
             return state;
             break;
     }
-}
+};

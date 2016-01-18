@@ -1,5 +1,12 @@
+/**
+ * Feed.js
+ *
+ * Feed component
+ */
+/* Dependencies */
 import React, { PropTypes, Component } from 'react';
 
+/* Component Definition */
 class Feed extends Component {
     constructor(props, context) {
         super(props, context)
@@ -25,10 +32,12 @@ class Feed extends Component {
     };
 };
 
+/* Component Prop Types */
 Feed.propTypes = {
     feed: PropTypes.object.isRequired,
     filterHandler: PropTypes.func.isRequired,
     activeFilter: PropTypes.string.isRequired
 };
 
+/* Default Export */
 export default Feed;

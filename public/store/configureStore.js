@@ -1,3 +1,10 @@
+/**
+ * configureStore.js
+ *
+ * Configures the singular store to
+ * be used by the Redux application
+ */
+
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';

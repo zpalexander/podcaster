@@ -1,5 +1,14 @@
+/**
+ * episodes.js
+ *
+ * Actions for the episodes reducer
+ */
+
+/* Constants */
 import * as types from '../constants/ActionTypes'
 
+
+/* Actions */
 export function toggleUnplayed(episodeName) {
     return {
         type: types.TOGGLE_UNPLAYED,
@@ -39,7 +48,6 @@ export function fetchEpisodes() {
         return fetch('/episodes')
             .then(response => response.json())
             .then(json => {
-                //console.log(json);
                 dispatch(receiveEpisodes(json))
             });
     }

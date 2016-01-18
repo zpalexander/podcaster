@@ -60,4 +60,6 @@
       }
     });
 
+    exports.server = server;;
+
 })();

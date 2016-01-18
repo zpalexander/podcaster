@@ -7,7 +7,7 @@
      */
 
     /* Dependencies */
-    var Episode  = require('../../models/Episode.js');
+    var Episode  = require('../../models/Episode');
 
     /* Function */
     exports.getEpisodes = function() {

@@ -1,7 +1,7 @@
 /**
- * EpActionBar.spec.js
+ * EpisodeInfo.spec.js
  *
- * Unit tests for the EpActionBar component
+ * Unit tests for the EpisodeInfo component
  */
 /* Dependencies */
 // Libraries and testing utilities
@@ -12,7 +12,7 @@ import expectJSX from 'expect-jsx';
 import {createRenderer} from 'react-addons-test-utils';
 expect.extend(expectJSX);
 // Component
-import EpisodeInfo from '../../public/components/EpisodeInfo';
+import EpisodeInfo from '../../../public/components/EpisodeInfo';
 
 
 /* Mock Props */
@@ -45,7 +45,7 @@ const expectedClassname = 'episode-info';
 
 
 /* Test */
-describe('Components: EpisodeInfo', () => {
+describe('Frontend - Components: EpisodeInfo', () => {
 
     it('has a classname "' + expectedClassname + '" that matches the component name', () => {
         let actualElement = buildComponent(false, new Date());
