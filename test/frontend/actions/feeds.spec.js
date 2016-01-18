@@ -60,7 +60,7 @@ describe('Frontend - Actions: Feeds', () => {
             { type: types.REQUEST_FEEDS },
             { type: types.RECEIVE_FEEDS, feeds: ['One', 'Two', 'Three'] }
         ];
-        const store = mockStore({episodes: []}, expectedActions, done);
+        const store = mockStore({feeds: []}, expectedActions, done);
         store.dispatch(actions.fetchFeeds());
     });
 
