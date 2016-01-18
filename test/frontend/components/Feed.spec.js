@@ -20,7 +20,7 @@ const filterHandler = () => {};
 
 
 /* Helpers */
-const buildComponent = (id, name, activeFilter) => {
+const buildComponent = (id = '', name = '', activeFilter = '') => {
     let feed = {
         id: id,
         name: name
@@ -46,8 +46,7 @@ const expectedClassname = 'feed';
 describe('Frontend - Components: Feed', () => {
 
     it('has a classname "' + expectedClassname + '" that matches the component name', () => {
-        let dummyFilter = 'SHOW_ALL';
-        let actualElement = buildComponent('', '', dummyFilter);
+        let actualElement = buildComponent();
         expect(actualElement.props.className).toContain(expectedClassname);
     });
 
