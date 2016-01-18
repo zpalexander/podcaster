@@ -1,7 +1,7 @@
 /**
- * EpActionBar.spec.js
+ * Header.spec.js
  *
- * Unit tests for the EpActionBar component
+ * Unit tests for the Header component
  */
 /* Dependencies */
 // Libraries and testing utilities
@@ -34,7 +34,7 @@ const expectedClassname = 'header';
 describe('Frontend - Components: Header', () => {
 
     it('has a classname "' + expectedClassname + '" that matches the component name', () => {
-        let actualElement = buildComponent(false, new Date());
+        let actualElement = buildComponent();
         expect(actualElement.props.className).toBe(expectedClassname);
     });
 
