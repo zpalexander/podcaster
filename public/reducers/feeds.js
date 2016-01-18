@@ -1,6 +1,16 @@
+/**
+ * feeds.js
+ *
+ * Reducer for the feeds
+ * state property
+ */
+
+/* Constants */
 import { ADD_FEED, UPDATE_FEED, DELETE_FEED, REQUEST_FEEDS, RECEIVE_FEEDS } from '../constants/ActionTypes';
 import initialState from '../constants/InitialState';
 
+
+/* Reducer */
 export default function feeds(state = initialState.feeds, action) {
     switch (action.type) {
         case ADD_FEED:

@@ -1,5 +1,10 @@
+/**
+ * App.js
+ *
+ * Container for the entire
+ * web application
+ */
 import React, { Component, PropTypes } from 'react';
-//import Bootstrap from 'bootstrap-sass-loader';
 import '!style!css!sass!../styles/styles.scss';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';

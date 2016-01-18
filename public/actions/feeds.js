@@ -1,7 +1,15 @@
+/**
+ * feeds.js
+ *
+ * Actions for the feeds reducer
+ */
+
+/* Dependencies */
 import * as types from '../constants/ActionTypes';
 import fetch from 'isomorphic-fetch';
 
 
+/* Actions */
 export function setActiveFeed(feed) {
     return {
         type: types.SET_ACTIVE_FEED,

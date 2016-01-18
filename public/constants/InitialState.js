@@ -3,6 +3,7 @@
  *
  * Initial State of the application
  */
+
 import { SHOW_ALL } from './Filters';
 
 const initialState = {
