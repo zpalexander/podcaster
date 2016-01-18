@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import EpActionBar from './EpActionBar';
+import EpisodeInfo from './EpisodeInfo';
 import EpDetails from './EpDetails';
 
 class Episode extends Component {
@@ -23,7 +23,7 @@ class Episode extends Component {
     renderActiveEpisode(episode, activeEpisodeHandler, actionClasses, detailsClasses) {
         return (
             <div className="episode-wrapper">
-                <EpActionBar episode={episode}
+                <EpisodeInfo episode={episode}
                     actionClasses={actionClasses}
                     detailsClasses={detailsClasses}
                     activeEpisodeHandler={activeEpisodeHandler}
@@ -39,7 +39,7 @@ class Episode extends Component {
     renderNormalEpisode(episode, activeEpisodeHandler, actionClasses) {
         return (
             <div className="episode-wrapper">
-                <EpActionBar episode={episode}
+                <EpisodeInfo episode={episode}
                     actionClasses={actionClasses}
                     activeEpisodeHandler={activeEpisodeHandler}
                 />

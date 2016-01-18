@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import moment from 'moment';
 
-class EpActionBar extends Component {
+class EpisodeInfo extends Component {
     constructor(props, context) {
         super(props, context)
     };
@@ -35,9 +35,9 @@ class EpActionBar extends Component {
 
 };
 
-EpActionBar.propTypes = {
+EpisodeInfo.propTypes = {
     episode: PropTypes.object.isRequired,
     activeEpisodeHandler: PropTypes.func.isRequired
 };
 
-export default EpActionBar;
+export default EpisodeInfo;
