@@ -3,20 +3,16 @@
     /**
      * stringToBool.js
      *
-     * Function to convert a string into its boolean equivalent
+     * Convert a string to a boolean
      */
 
-    exports.stringToBool = function(_string) {
-        var output;
-        if (typeof _string === 'string') {
-            if (_string === 'true') {
-                output = true;
-            } else {
-                output = true;
-            }
-        } else {
-            output = _string;
+    exports.default = function(_str) {
+        if (typeof(_str) === 'boolean') { return _str; }
+        switch (_str.toLowerCase().trim()) {
+            case 'true': case 'yes': case '1': return true;
+            case 'false': case 'no': case '0': case null: return false;
+            default: return Boolean(_str);
         }
-        return output;
     };
-});
+
+}());
