@@ -11,7 +11,6 @@ import fetch from 'isomorphic-fetch';
 import * as types from '../constants/ActionTypes';
 
 
-
 /* Actions */
 export function setActiveFeed(feed) {
     return {
@@ -34,9 +33,11 @@ export function receiveFeeds(feeds) {
 };
 
 export function fetchFeeds() {
+    const origin = (typeof(window) !== 'undefined') ? window.location.origin : 'http://localhost:3000';
+    const uri = origin + '/feeds';
     return dispatch => {
         dispatch(requestFeeds())
-        return fetch('/feeds')
+        return fetch(uri)
             .then(response => response.json())
             .then(json => dispatch(receiveFeeds(json)))
     }

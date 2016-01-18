@@ -4,7 +4,10 @@
  * Actions for the episodes reducer
  */
 
-/* Constants */
+/* Dependencies */
+// Libraries
+import fetch from 'isomorphic-fetch';
+// Constants
 import * as types from '../constants/ActionTypes'
 
 
@@ -43,9 +46,11 @@ export function receiveEpisodes(episodes) {
 }
 
 export function fetchEpisodes() {
+    const origin = (typeof(window) !== 'undefined') ? window.location.origin : 'http://localhost:3000';
+    const uri = origin + '/episodes';
     return dispatch => {
         dispatch(requestEpisodes());
-        return fetch('/episodes')
+        return fetch(uri)
             .then(response => response.json())
             .then(json => {
                 dispatch(receiveEpisodes(json))
