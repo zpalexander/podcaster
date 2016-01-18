@@ -5,8 +5,11 @@
  */
 
 /* Dependencies */
-import * as types from '../constants/ActionTypes';
+// Libraries
 import fetch from 'isomorphic-fetch';
+// Constants
+import * as types from '../constants/ActionTypes';
+
 
 
 /* Actions */

@@ -1,7 +1,19 @@
+/**
+ * Sidebar.js
+ *
+ * Sidebar component
+ */
+
+/* Dependencies */
+// Libraries
 import React, { PropTypes, Component } from 'react';
+// Constants
 import { SHOW_ALL } from '../constants/Filters';
+// Components
 import Feed from './Feed';
 
+
+/* Component Definition */
 class Sidebar extends Component {
     constructor(props, context) {
         super(props, context);
@@ -54,10 +66,14 @@ class Sidebar extends Component {
     }
 };
 
+
+/* Component Prop Types */
 Sidebar.propTypes = {
     feeds: PropTypes.array.isRequired,
     filter: PropTypes.string.isRequired,
     setActiveFeed: PropTypes.func.isRequired
 };
 
+
+/* Default Export */
 export default Sidebar;

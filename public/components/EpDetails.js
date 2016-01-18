@@ -11,8 +11,6 @@ class EpDetails extends Component {
         super(props, context);
     };
 
-
-
     render() {
         const { episode, detailsClasses } = this.props;
         let sourceURL = episode.url;

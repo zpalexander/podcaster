@@ -1,7 +1,18 @@
+/**
+ * MainSection.js
+ *
+ * MainSection component
+ */
+
+/* Dependencies */
+// Libraries
 import React, { PropTypes, Component } from 'react';
+// Constants
 import { SHOW_ALL } from '../constants/Filters';
+// Components
 import Episode from './Episode';
 
+/* Component Definition */
 class MainSection extends Component {
     constructor(props, context) {
         super(props, context)
@@ -61,6 +72,8 @@ class MainSection extends Component {
     }
 };
 
+
+/* Component Prop Types */
 MainSection.propTypes = {
     episodes: PropTypes.array.isRequired,
     activeFeed: PropTypes.string.isRequired,
@@ -69,4 +82,5 @@ MainSection.propTypes = {
     unsetActiveEpisode: PropTypes.func.isRequired
 }
 
+/* Default Export */
 export default MainSection;

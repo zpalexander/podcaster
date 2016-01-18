@@ -4,7 +4,7 @@
  * Actions for the episodes reducer
  */
 
-/* Dependencies */
+/* Constants */
 import * as types from '../constants/ActionTypes'
 
 
