@@ -25,6 +25,7 @@
     "cors": "^2.7.1",
     "css-loader": "^0.23.0",
     "feed-read": "0.0.1",
+    "feedparser": "^1.1.4",
     "file-loader": "^0.8.5",
     "fs": "0.0.2",
     "isomorphic-fetch": "^2.2.0",

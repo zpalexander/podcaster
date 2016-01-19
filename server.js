@@ -37,8 +37,6 @@
 
 
     /* Declare Endpoints */
-    // View
-    app.get('/', view.show);
     // Feed
     app.get('/feeds/', feeds.getFeeds);
     app.get('/feed/:feedID', feeds.getEpisodes);
@@ -48,6 +46,8 @@
     // Episode
     app.get('/episodes/', episodes.get);
     app.post('/episode/toggleUnplayed', episodes.toggleUnplayed);
+    // View
+    app.get('/*', view.show);
 
 
     /* Start Server Listening */

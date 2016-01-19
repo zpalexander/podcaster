@@ -34,6 +34,7 @@
                 res.send('Feed "' + feedID + '" refreshed successfully').status(result.status).end();;
             })
             .catch(function(err) {
+                console.log(err);
                 res.send(err.message).status(err.status).end();
             });
     };
