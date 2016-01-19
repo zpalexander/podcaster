@@ -34,7 +34,7 @@ class MainSection extends Component {
         return filteredEpisodes;
     };
 
-    renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode) {
+    renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed) {
         let content = false;
         if (!filteredEpisodes) {
             content = ( <div>No Episodes</div> )
@@ -48,6 +48,7 @@ class MainSection extends Component {
                             activeEpisode={activeEpisode}
                             setActiveEpisode={setActiveEpisode}
                             unsetActiveEpisode={unsetActiveEpisode}
+                            toggleUnplayed={toggleUnplayed}
                         />
                     )}
                 </div>
@@ -59,11 +60,11 @@ class MainSection extends Component {
     };
 
     render() {
-        const { episodes, activeFeed, activeEpisode, setActiveEpisode, unsetActiveEpisode } = this.props;
+        const { episodes, activeFeed, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed } = this.props;
 
         let filteredEpisodes = this.filterEpisodes(episodes, activeFeed);
         //console.log('filteredEpisodes', filteredEpisodes);
-        let content = this.renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode);
+        let content = this.renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed);
         return (
             <section className="content">
                 { content }
@@ -79,7 +80,8 @@ MainSection.propTypes = {
     activeFeed: PropTypes.string.isRequired,
     activeEpisode: PropTypes.string.isRequired,
     setActiveEpisode: PropTypes.func.isRequired,
-    unsetActiveEpisode: PropTypes.func.isRequired
+    unsetActiveEpisode: PropTypes.func.isRequired,
+    toggleUnplayed: PropTypes.func.isRequired
 }
 
 /* Default Export */

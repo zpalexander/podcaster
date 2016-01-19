@@ -11,9 +11,22 @@ import initialState from '../constants/InitialState';
 
 /* Reducer */
 export default function episodes(state = initialState.episodes, action) {
+    var newState;
     switch(action.type) {
         case TOGGLE_UNPLAYED:
-            return state;
+            newState = state.map((episode) => {
+                var modifiedEpisode;
+                if (episode._id === action.episode) {
+                    modifiedEpisode = Object.assign({}, episode, {
+                        unplayed: !episode.unplayed
+                    });
+                } else {
+                    modifiedEpisode = episode;
+                }
+                return modifiedEpisode;
+            });
+            console.log(newState);
+            return newState;
             break;
 
         case REQUEST_EPISODES:
