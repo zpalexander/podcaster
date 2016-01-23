@@ -16,7 +16,7 @@ export default function episodes(state = initialState.episodes, action) {
         case TOGGLE_UNPLAYED:
             newState = state.map((episode) => {
                 var modifiedEpisode;
-                if (episode._id === action.episode) {
+                if (episode.name === action.episode) {
                     modifiedEpisode = Object.assign({}, episode, {
                         unplayed: !episode.unplayed
                     });
@@ -25,7 +25,6 @@ export default function episodes(state = initialState.episodes, action) {
                 }
                 return modifiedEpisode;
             });
-            console.log(newState);
             return newState;
             break;
 

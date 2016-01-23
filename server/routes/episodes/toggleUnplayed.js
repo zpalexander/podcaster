@@ -15,6 +15,7 @@
         return Episode.updateAsync(updateConditions, updateValue, updateOptions)
             .then(function(result) {
                 if (result.ok === 1) {
+                    console.log(result);
                     return { message: 'Toggle successful', status: 200 };
                 } else {
                     throw errors.internalError;

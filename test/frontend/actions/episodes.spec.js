@@ -32,7 +32,7 @@ describe('Frontend - Actions: Episodes', () => {
             type: types.TOGGLE_UNPLAYED,
             episode: episodeName
         };
-        expect(actions.toggleUnplayed(episodeName)).toEqual(expectedAction);
+        expect(actions.UItoggleUnplayed(episodeName)).toEqual(expectedAction);
     });
 
     it('should create an action to set the active episode', () => {
