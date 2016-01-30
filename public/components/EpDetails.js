@@ -14,9 +14,10 @@ class EpDetails extends Component {
     render() {
         const { episode, detailsClasses } = this.props;
         let sourceURL = episode.url;
+        let classes = 'episode-details ' + detailsClasses;
 
         return (
-            <div className={detailsClasses}>
+            <div className={classes}>
                 <audio controls preload="none">
                     <source src={sourceURL} type="audio/mpeg"></source>
                     Your browser does not support the audio element.

@@ -16,7 +16,7 @@ class Episode extends Component {
     };
 
     buildDetailsClasses(episode) {
-        let classNames = 'episode-details ' + episode._id;
+        let classNames = episode._id;
         return classNames;
     };
 
@@ -30,7 +30,6 @@ class Episode extends Component {
                     toggleUnplayed={toggleUnplayed}
                 />
                 <EpDetails episode={episode}
-                    actionClasses={actionClasses}
                     detailsClasses={detailsClasses}
                 />
             </div>
