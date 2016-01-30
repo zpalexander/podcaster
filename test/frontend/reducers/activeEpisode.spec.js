@@ -1,7 +1,7 @@
 /**
- * admin.spec.js
+ * activeEpisode.spec.js
  *
- * Unit tests for the admin reducer
+ * Unit tests for the activeEpisode reducer
  */
 
 /* Dependencies */
@@ -11,7 +11,6 @@ import expect from 'expect';
 import reducer from '../../../public/reducers/activeEpisode';
 // Constants
 import { SET_ACTIVE_EPISODE, UNSET_ACTIVE_EPISODE } from '../../../public/constants/ActionTypes';
-
 
 
 /* Mocks */

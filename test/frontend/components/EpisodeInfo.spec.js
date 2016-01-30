@@ -17,6 +17,7 @@ import EpisodeInfo from '../../../public/components/EpisodeInfo';
 
 /* Mock Props */
 const activeEpisodeHandler = () => {};
+const toggleUnplayed = () => {};
 
 
 /* Helpers */
@@ -34,6 +35,7 @@ const buildComponent = (unplayed, date) => {
         <EpisodeInfo
             episode={episode}
             activeEpisodeHandler={activeEpisodeHandler}
+            toggleUnplayed={toggleUnplayed}
         />
     );
     return renderer.getRenderOutput();
