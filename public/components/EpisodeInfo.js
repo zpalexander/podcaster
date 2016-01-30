@@ -18,14 +18,21 @@ class EpisodeInfo extends Component {
         return moment(rawDate).format('ddd, MMMM Do');
     };
 
+    handleClick(episode, activeEpisodeHandler, toggleUnplayed) {
+        activeEpisodeHandler(episode._id);
+        if (episode.unplayed) { toggleUnplayed(episode.unplayed, episode.name); }
+    };
+
 
     render() {
-        const { episode, activeEpisodeHandler } = this.props;
+        const { episode, activeEpisodeHandler, toggleUnplayed } = this.props;
         let actionClasses = this.buildActionClasses(episode);
         let date = this.renderDate(episode.pubDate);
 
         return (
-            <div className={actionClasses} onClick={activeEpisodeHandler.bind(this, episode._id)}>
+            <div className={actionClasses}
+                onClick={this.handleClick.bind(this, episode, activeEpisodeHandler, toggleUnplayed)}
+            >
                 <span className="feed-name">{episode.feedName}</span>
                 <span className="episode-name">{episode.name}</span>
                 <span className="date">{date}</span>
@@ -37,7 +44,8 @@ class EpisodeInfo extends Component {
 
 EpisodeInfo.propTypes = {
     episode: PropTypes.object.isRequired,
-    activeEpisodeHandler: PropTypes.func.isRequired
+    activeEpisodeHandler: PropTypes.func.isRequired,
+    toggleUnplayed: PropTypes.func.isRequired
 };
 
 export default EpisodeInfo;

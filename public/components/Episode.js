@@ -20,13 +20,14 @@ class Episode extends Component {
         return classNames;
     };
 
-    renderActiveEpisode(episode, activeEpisodeHandler, actionClasses, detailsClasses) {
+    renderActiveEpisode(episode, activeEpisodeHandler, actionClasses, detailsClasses, toggleUnplayed) {
         return (
             <div className="episode-wrapper">
                 <EpisodeInfo episode={episode}
                     actionClasses={actionClasses}
                     detailsClasses={detailsClasses}
                     activeEpisodeHandler={activeEpisodeHandler}
+                    toggleUnplayed={toggleUnplayed}
                 />
                 <EpDetails episode={episode}
                     actionClasses={actionClasses}
@@ -36,12 +37,13 @@ class Episode extends Component {
         )
     };
 
-    renderNormalEpisode(episode, activeEpisodeHandler, actionClasses) {
+    renderNormalEpisode(episode, activeEpisodeHandler, actionClasses, toggleUnplayed) {
         return (
             <div className="episode-wrapper">
                 <EpisodeInfo episode={episode}
                     actionClasses={actionClasses}
                     activeEpisodeHandler={activeEpisodeHandler}
+                    toggleUnplayed={toggleUnplayed}
                 />
             </div>
         )
@@ -57,16 +59,16 @@ class Episode extends Component {
 
 
     render() {
-        const { episode, activeEpisode, setActiveEpisode, unsetActiveEpisode } = this.props;
+        const { episode, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed } = this.props;
 
         let actionClasses = this.buildActionClasses(episode);
         let detailsClasses = this.buildDetailsClasses(episode);
 
         let content = false;
         if (this.isActiveEpisode(episode, activeEpisode)) {
-            content = this.renderActiveEpisode(episode, unsetActiveEpisode, actionClasses, detailsClasses)
+            content = this.renderActiveEpisode(episode, unsetActiveEpisode, actionClasses, detailsClasses, toggleUnplayed)
         } else {
-            content = this.renderNormalEpisode(episode, setActiveEpisode, actionClasses);
+            content = this.renderNormalEpisode(episode, setActiveEpisode, actionClasses, toggleUnplayed);
         }
         return content;
     }
@@ -77,7 +79,8 @@ Episode.propTypes = {
     episode: PropTypes.object.isRequired,
     activeEpisode: PropTypes.string.isRequired,
     setActiveEpisode: PropTypes.func.isRequired,
-    unsetActiveEpisode: PropTypes.func.isRequired
+    unsetActiveEpisode: PropTypes.func.isRequired,
+    toggleUnplayed: PropTypes.func.isRequired
 };
 
 export default Episode;

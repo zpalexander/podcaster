@@ -31,10 +31,10 @@
         var feedID = req.body.id;
         refreshFeedEpisodes(feedID)
             .then(function(result) {
-                res.send('Feed "' + feedID + '" refreshed successfully').status(result.status).end();;
+                res.status(result.status).send('Feed "' + feedID + '" refreshed successfully');
             })
             .catch(function(err) {
-                res.send(err.message).status(err.status).end();
+                res.status(err.status).send(err.message);
             });
     };
 
@@ -42,11 +42,11 @@
         var feedID = req.params.feedID;
         getFeedEpisodes(feedID)
             .then(function(response) {
-                res.send(response.body).status(response.status).end();
+                res.status(response.status).send(response.body);
             })
             .catch(function(err) {
-                res.send(err.message).status(err.status).end();
-            })
+                res.status(err.status).send(err.message);
+            });
     };
 
     exports.addFeed = function(req, res) {
@@ -58,10 +58,10 @@
         };
         addFeed(feedParams)
             .then(function(result) {
-                res.send('Feed "' + feedParams.name + '" saved successfully').status(result.status).end();
+                res.status(result.status).send('Feed "' + feedParams.name + '" saved successfully');
             })
             .catch(function(err) {
-                res.send(err).status(500).end();
+                res.status(500).send(err);
             });
     };
 
@@ -72,7 +72,7 @@
             })
             .catch(function(err) {
                 console.log('err removing feed: ', req.query.name, ' with error: ', err);
-                return res.status(500).json({'err': err}).end();
+                return res.status(500).json({'err': err});
             });
     };
 
