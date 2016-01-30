@@ -17,7 +17,7 @@ export default function activeEpisode(state = initialState.activeEpisode, action
             break;
 
         case UNSET_ACTIVE_EPISODE:
-            return null;
+            return '';
             break;
 
         default:
