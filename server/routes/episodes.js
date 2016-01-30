@@ -16,19 +16,22 @@
     exports.get = function(req, res) {
         getEpisodes()
             .then(function(response) {
-                res.send(response).status(200).end();
+                res.status(200).send(response);
             })
             .catch(function(err) {
-                res.send(err).status(500).end();
+                res.status(500).send(err);
             });
     };
 
     exports.toggleUnplayed = function(req, res) {
-        var unplayedStatus = stringToBool(req.body.unplayedStatus)
+        var unplayedStatus = stringToBool(req.body.unplayedStatus);
         var episodeName = req.body.episodeName;
         toggleUnplayed(episodeName, unplayedStatus)
             .then(function(response) {
-                res.status(response.status).send(response.message).end();
+                res.status(response.status).send(response.message);
+            })
+            .catch(function(err) {
+                res.status(500).send(err);
             });
     };
 

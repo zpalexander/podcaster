@@ -17,7 +17,7 @@
         url:  {type : String},
         pubDate: {type: Date},
         playPosition: {type: Number},
-        unplayed: {type: Boolean},
+        unplayed: {type: Boolean}
     }, {versionKey : false});
 
     var Episode = module.exports = mongoose.model('Episode', episodeSchema);
