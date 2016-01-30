@@ -54,7 +54,6 @@ class Sidebar extends Component {
     render() {
         const { feeds, filter, setActiveFeed } = this.props;
 
-
         let content = this.renderContent(feeds, filter, setActiveFeed);
 
         return (
