@@ -25,6 +25,9 @@
             .then(function(result) {
                 return { body: result, status: 200 };
             })
+            .catch(function(err) {
+                return err;
+            });
     };
 
 
@@ -53,7 +56,7 @@
         feedparser.on('readable', function() {
             // This is where the action is!
             var stream = this;
-            var meta = this.meta // **NOTE** the "meta" is always available in the context of the feedparser instance
+            var meta = this.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
             var item;
             var isOk = true;
             while (item = stream.read()) {
@@ -63,7 +66,6 @@
         });
 
         feedparser.on('end', function() {
-            // @TODO: Strip the html tags off the description
             var i = -1;
             var feedEpisodes = episodes.map(function(episode) {
                 i++;
@@ -72,7 +74,7 @@
                     name: episode.title,
                     feed: feedID,
                     feedName: feedName,
-                    description: episode.description,
+                    description: episode.description.replace(/(<([^>]+)>)/ig,""),
                     url: episode.fileURL,
                     pubDate: new Date(episode.pubdate),
                     playPosition: 0,
@@ -83,4 +85,4 @@
         });
     };
 
-})();
+}());

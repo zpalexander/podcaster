@@ -19,7 +19,7 @@
             })
             .catch(function(err) {
                 return err;
-            })
+            });
     };
 
-})();
+}());
