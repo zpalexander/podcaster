@@ -14,11 +14,13 @@
         var updateOptions    = {multi: false};
         return Episode.updateAsync(updateConditions, updateValue, updateOptions)
             .then(function(result) {
-                if (result.ok === 1) {
-                    return { message: 'Toggle successful', status: 200 };
-                } else {
+                if (result.nModified === 0) {
+                    throw errors.notFound;
+                }
+                if (result.ok !== 1) {
                     throw errors.internalError;
                 }
+                return { message: 'Toggle successful', status: 200 };
             })
             .catch(function(err) {
                 return err;
