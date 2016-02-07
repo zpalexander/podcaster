@@ -3,9 +3,10 @@
  *
  * Episode Details tray component
  */
-
+/* Dependencies */
 import React, { PropTypes, Component } from 'react';
 
+/* Component Definition */
 class EpDetails extends Component {
     constructor(props, context) {
         super(props, context);
@@ -29,9 +30,11 @@ class EpDetails extends Component {
 
 };
 
+/* Component Prop Types */
 EpDetails.propTypes = {
     episode: PropTypes.object.isRequired,
     detailsClasses: PropTypes.string.isRequired
 };
 
+/* Default Export */
 export default EpDetails;
