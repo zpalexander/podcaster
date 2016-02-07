@@ -30,7 +30,7 @@
     "isomorphic-fetch": "^2.2.0",
     "jquery": "^2.1.4",
     "lodash": "^4.1.0",
-    "moment": "^2.10.6",
+    "moment": "^2.11.2",
     "mongoose": "^4.2.5",
     "node-sass": "^3.4.2",
     "path": "^0.12.7",
