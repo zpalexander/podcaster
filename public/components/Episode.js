@@ -1,7 +1,14 @@
+/**
+ * Episode.js
+ *
+ * Episode component
+ */
+/* Dependencies */
 import React, { PropTypes, Component } from 'react';
 import EpisodeInfo from './EpisodeInfo';
 import EpDetails from './EpDetails';
 
+/* Component Definition */
 class Episode extends Component {
     constructor(props, context) {
         super(props, context)
@@ -16,7 +23,7 @@ class Episode extends Component {
     };
 
     buildDetailsClasses(episode) {
-        let classNames = 'episode-details ' + episode._id;
+        let classNames = episode._id;
         return classNames;
     };
 
@@ -30,7 +37,6 @@ class Episode extends Component {
                     toggleUnplayed={toggleUnplayed}
                 />
                 <EpDetails episode={episode}
-                    actionClasses={actionClasses}
                     detailsClasses={detailsClasses}
                 />
             </div>
@@ -75,6 +81,7 @@ class Episode extends Component {
 
 };
 
+/* Prop Types */
 Episode.propTypes = {
     episode: PropTypes.object.isRequired,
     activeEpisode: PropTypes.string.isRequired,
@@ -83,4 +90,5 @@ Episode.propTypes = {
     toggleUnplayed: PropTypes.func.isRequired
 };
 
+/* Default Export */
 export default Episode;

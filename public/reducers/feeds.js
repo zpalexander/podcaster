@@ -14,14 +14,13 @@ import initialState from '../constants/InitialState';
 export default function feeds(state = initialState.feeds, action) {
     switch (action.type) {
         case ADD_FEED:
-            return state.push(
+            return state.concat(
                 {
                     feedID: action.feedID,
                     name: action.name,
                     url: action.url,
                     category: action.category
-                },
-                ...state
+                }
             );
             break;
 

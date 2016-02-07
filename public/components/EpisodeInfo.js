@@ -1,6 +1,13 @@
+/**
+ * EpisodeInfo.js
+ *
+ * EpisodeInfo component
+ */
+/* Dependencies */
 import React, { PropTypes, Component } from 'react';
 import moment from 'moment';
 
+/* Component Definition */
 class EpisodeInfo extends Component {
     constructor(props, context) {
         super(props, context)
@@ -42,10 +49,12 @@ class EpisodeInfo extends Component {
 
 };
 
+/* Prop Types */
 EpisodeInfo.propTypes = {
     episode: PropTypes.object.isRequired,
     activeEpisodeHandler: PropTypes.func.isRequired,
     toggleUnplayed: PropTypes.func.isRequired
 };
 
+/* Default Export */
 export default EpisodeInfo;
