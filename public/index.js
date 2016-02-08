@@ -16,6 +16,7 @@ import { syncReduxAndRouter } from 'redux-simple-router';
 /* Containers */
 import App from './containers/App';
 import UI from './containers/UI';
+import AddFeed from './containers/AddFeed';
 /* Store */
 import configureStore from './store/configureStore';
 
@@ -29,6 +30,7 @@ render(
         <Router history={history}>
             <Route path='/' component={App}>
                 <IndexRoute component={UI} />
+                <Route path='add' component={AddFeed} />
             </Route>
         </Router>
     </Provider>,

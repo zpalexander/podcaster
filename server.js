@@ -14,7 +14,6 @@
     var cors                 = require('cors');
     var mongoose             = require('mongoose');
     // Route handlers
-    var view                 = require('./server/routes/view');
     var feeds                = require('./server/routes/feeds');
     var episodes             = require('./server/routes/episodes');
 
@@ -47,7 +46,9 @@
     app.get('/episodes/', episodes.get);
     app.post('/episode/toggleUnplayed', episodes.toggleUnplayed);
     // View
-    app.get('/*', view.show);
+    app.get('/*', function(req, res) {
+        res.sendFile(path.resolve(__dirname + '/public/index.html'));
+    });
 
 
     /* Start Server Listening */

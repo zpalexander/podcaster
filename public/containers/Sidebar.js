@@ -9,6 +9,8 @@
 import React, { PropTypes, Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
+// Actions
 import * as FeedActions from '../actions/feeds';
 // Constants
 import { SHOW_ALL } from '../constants/Filters';
@@ -77,7 +79,7 @@ class Sidebar extends Component {
 
         return (
             <section className="sidebar">
-                <div className="add-feed">Add Content</div>
+                <div className="add-feed"><Link to='add'>Add Content</Link></div>
                 { content }
             </section>
         );
