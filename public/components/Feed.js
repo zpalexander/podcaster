@@ -5,6 +5,7 @@
  */
 /* Dependencies */
 import React, { PropTypes, Component } from 'react';
+import { Link } from 'react-router';
 
 /* Component Definition */
 class Feed extends Component {
@@ -26,7 +27,7 @@ class Feed extends Component {
 
         return(
             <div className={classes} onClick={filterHandler.bind(this, feed.id)} >
-                {feed.name}
+                <Link to='/'>{feed.name}</Link>
             </div>
         );
     };
