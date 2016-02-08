@@ -1,0 +1,35 @@
+/**
+ * _add-feed-form.scss
+ *
+ * Styles for the add feed form
+ */
+
+.add-feed-form {
+    width: 60%;
+    max-width: 600px;
+    margin: 10% auto 0;
+
+    .new-feed-button {
+        width: 150px;
+        padding: 10px;
+    }
+
+    p {
+        text-align: center;
+    }
+}
+
+.new-feed-url {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    outline: none;
+    padding: 5px;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    font-size: 1.5em;
+    font-weight: 200;
+    width: 100%;
+    margin: 15px 0;
+}

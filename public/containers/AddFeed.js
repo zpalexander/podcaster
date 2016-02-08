@@ -7,6 +7,8 @@
 /* Dependencies */
 // Libraries
 import React, { Component/*, PropTypes*/ } from 'react';
+// Components
+import AddFeedForm from '../components/AddFeed/AddFeedForm';
 
 class AddFeed extends Component {
     constructor(props) {
@@ -16,8 +18,8 @@ class AddFeed extends Component {
 
     render() {
         return (
-            <div className='ui'>
-                Yay! Routing.
+            <div className='add-feed'>
+                <AddFeedForm />
             </div>
         );
     };

@@ -5,14 +5,17 @@
  */
 
 .sidebar {
-    width: 20%;
+    width: 250px;
 }
 
-.ui {
-    margin-left: 21%;
-    width: 79%;
+.ui,
+.add-feed {
+    height: 100vh;
+    margin-left: 250px;
+    width: 81%;
 }
 
 .content {
     margin-top: 60px;
+    margin-left: 10px;
 }

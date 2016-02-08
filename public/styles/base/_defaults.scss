@@ -2,9 +2,19 @@
  * _defaults.scss
  */
 
+html {
+    height: 100vh;
+}
+
 body {
+    height: 100vh;
     color: #222;
     font-family: sans-serif;
+    margin: 0;
+}
+
+#root {
+    height: 100vh;
 }
 
 a {

@@ -78,7 +78,7 @@ class Sidebar extends Component {
 
         return (
             <section className="sidebar">
-                <div className="add-feed">
+                <div className="new-feed-button">
                     <Link to='add' onClick={setActiveFeed.bind(this, '')}>
                         Add Content
                     </Link>
