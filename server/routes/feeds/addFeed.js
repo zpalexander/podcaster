@@ -8,14 +8,20 @@
 
     /* Dependencies */
     var Feed = require('../../models/Feed.js');
-
+    var refreshFeedEpisodes = require('./refreshFeedEpisodes').refresh;
 
     /* Logic */
     exports.add = function(feedParams) {
         var feed = new Feed(feedParams);
         return feed.saveAsync()
             .then(function(result) {
-                return { body: result, status: 200 };
+                return result._id;
+            })
+            .then(function(feedID) {
+                refreshFeedEpisodes(feedID);
+            })
+            .then(function(result) {
+                return result;
             })
             .catch(function(err) {
                 return err;

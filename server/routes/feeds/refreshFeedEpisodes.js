@@ -8,10 +8,10 @@
 
     /* Dependencies */
     // I should switch to node-feedparser
-    var Promise = require('bluebird');
     var Episode  = require('../../models/Episode.js');
     var FeedParser = require('feedparser');
     var request = require('request');
+    var _ = require('lodash');
     /* Helpers */
     var getFeedFromID = require('./getFeedFromID').get;
 
@@ -60,8 +60,10 @@
             var item;
             var isOk = true;
             while (item = stream.read()) {
-                item.fileURL = item.enclosures[0].url;
-                episodes.push(item);
+                if (_.get(item, 'enclosures[0].url', false)) {
+                    item.fileURL = item.enclosures[0].url;
+                    episodes.push(item);
+                }
             }
         });
 
