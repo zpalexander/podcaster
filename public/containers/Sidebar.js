@@ -28,17 +28,18 @@ class Sidebar extends Component {
     };
 
 
-    renderContent(feeds, filter, setActiveFeed) {
+    renderEmpty() {
+        return (<div>No feeds</div>);
+    };
+
+    renderFeedList(feeds, filter, setActiveFeed) {
         const allFeeds = {
             name: 'Show All',
             id: SHOW_ALL
         };
-        let content = false;
-        if (feeds.length === 0) {
-            content = ( <div>No feeds</div> );
-        } else {
-            content = (
-                <div>
+
+        return (
+            <div>
                 <Feed key={allFeeds.id}
                     feed={allFeeds}
                     filterHandler={setActiveFeed}
@@ -51,8 +52,17 @@ class Sidebar extends Component {
                         activeFilter={filter}
                     />
                 )}
-                </div>
-            );
+            </div>
+        );
+    };
+
+
+    renderContent(feeds, filter, setActiveFeed, renderEmpty, renderFeedList) {
+        let content = false;
+        if (feeds.length === 0) {
+            content = renderEmpty();
+        } else {
+            content = renderFeedList(feeds, filter, setActiveFeed);
         }
         return content;
 
@@ -63,7 +73,7 @@ class Sidebar extends Component {
         const { feeds, activeFeed, dispatch } = this.props;
         const feedActions = bindActionCreators(FeedActions, dispatch);
         const { setActiveFeed } = feedActions;
-        let content = this.renderContent(feeds, activeFeed, setActiveFeed);
+        let content = this.renderContent(feeds, activeFeed, setActiveFeed, this.renderEmpty, this.renderFeedList);
 
         return (
             <section className="sidebar">
