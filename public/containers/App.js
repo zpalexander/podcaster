@@ -9,8 +9,6 @@ import '!style!css!sass!../styles/styles.scss';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as FeedActions from '../actions/feeds';
-import * as EpisodeActions from '../actions/episodes';
-import UI from './UI';
 import Sidebar from './Sidebar';
 
 
@@ -22,14 +20,12 @@ class App extends Component {
     componentDidMount() {
         const { dispatch } = this.props;
         dispatch(FeedActions.fetchFeeds());
-        dispatch(EpisodeActions.fetchEpisodes());
     };
 
     render() {
         var self = this;
-        const { feeds, episodes, activeFeed, activeEpisode, dispatch } = self.props;
+        const { children, feeds, activeFeed, dispatch } = self.props;
         let feedActions = bindActionCreators(FeedActions, dispatch);
-        let episodeActions = bindActionCreators(EpisodeActions, dispatch);
 
         return (
             <div>
@@ -38,22 +34,16 @@ class App extends Component {
                     filter={activeFeed}
                     {...feedActions}
                 />
-                <UI
-                    episodes={episodes}
-                    activeFeed={activeFeed}
-                    activeEpisode={activeEpisode}
-                    {...episodeActions}
-                />
+                {children}
             </div>
         )
     };
 };
 
 App.propTypes = {
+    children: PropTypes.object.isRequired,
     feeds: PropTypes.array.isRequired,
-    episodes: PropTypes.array.isRequired,
     activeFeed: PropTypes.string.isRequired,
-    activeEpisode: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired
 };
 

@@ -8,6 +8,10 @@
 /* Dependencies */
 // Libraries
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+// Actions
+import * as EpisodeActions from '../actions/episodes';
 // Components
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
@@ -17,8 +21,16 @@ class UI extends Component {
         super(props);
     };
 
+    componentDidMount() {
+        const { dispatch } = this.props;
+        dispatch(EpisodeActions.fetchEpisodes());
+    };
+
+
     render() {
-        const { episodes, activeFeed, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed } = this.props;
+        const { episodes, activeFeed, activeEpisode, dispatch } = this.props;
+        const episodeActions = bindActionCreators(EpisodeActions, dispatch);
+        const { setActiveEpisode, unsetActiveEpisode, toggleUnplayed } = episodeActions;
 
         return (
             <div className='ui'>
@@ -40,11 +52,20 @@ UI.propTypes = {
     episodes: PropTypes.array.isRequired,
     activeFeed: PropTypes.string.isRequired,
     activeEpisode: PropTypes.string.isRequired,
-    setActiveEpisode: PropTypes.func.isRequired,
-    unsetActiveEpisode: PropTypes.func.isRequired,
-    toggleUnplayed: PropTypes.func.isRequired
-}
+    dispatch: PropTypes.func.isRequired
+};
 
 
-export default UI;
+function mapStateToProps(state) {
+    return {
+        episodes: state.episodes,
+        activeFeed: state.activeFeed,
+        activeEpisode: state.activeEpisode
+    }
+};
+
+
+export default connect(
+    mapStateToProps
+)(UI);
 
