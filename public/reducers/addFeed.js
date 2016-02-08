@@ -5,7 +5,7 @@
  */
 
 /* Constants */
-import { HANDLE_ADD_FEED_INPUT, REQUEST_ADD_NEW_FEED, COMPLETE_ADD_NEW_FEED } from '../constants/ActionTypes';
+import { HANDLE_ADD_FEED_INPUT, CLEAR_FEED_INPUT, REQUEST_ADD_NEW_FEED, COMPLETE_ADD_NEW_FEED } from '../constants/ActionTypes';
 import { NEW_FEED_NAME, NEW_FEED_URL, NEW_FEED_CATEGORY } from '../constants/FieldNames';
 import initialState from '../constants/InitialState';
 
@@ -26,6 +26,14 @@ export default function episodes(state = initialState.addFeed, action) {
                     newFeedCategory: action.text
                 });
             }
+            break;
+
+        case CLEAR_FEED_INPUT:
+            return Object.assign({}, state, {
+                newFeedName: '',
+                newFeedURL: '',
+                newFeedCategory: ''
+            });
             break;
 
         case REQUEST_ADD_NEW_FEED:

@@ -15,7 +15,7 @@ import * as actions from '../../../public/actions/addFeed';
 import * as types from '../../../public/constants/ActionTypes';
 
 /* Mocks */
-const middlewares = [ thunk ];
+//const middlewares = [ thunk ];
 //const mockStore = configureMockStore(middlewares);
 
 
@@ -49,6 +49,13 @@ describe('Frontend - Actions: AddFeed', () => {
             text: sampleString
         };
         expect(actions.handleAddFeedInput(sampleField, sampleString)).toEqual(expectedAction);
+    });
+
+    it('should create an action to clear the form input', () => {
+        const expectedAction = {
+            type: types.CLEAR_FEED_INPUT
+        };
+        expect(actions.clearFeedInput()).toEqual(expectedAction);
     });
 
 });

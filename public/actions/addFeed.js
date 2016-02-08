@@ -19,6 +19,12 @@ export function handleAddFeedInput(field, text) {
     };
 };
 
+export function clearFeedInput() {
+    return {
+        type: types.CLEAR_FEED_INPUT
+    };
+};
+
 export function requestAddNewFeed() {
     return {
         type: types.REQUEST_ADD_NEW_FEED
@@ -55,6 +61,7 @@ export function addNewFeed(name, url, category) {
             .then(result => {
                 dispatch(completeAddNewFeed(result));
                 dispatch(fetchFeeds());
+                dispatch(clearFeedInput());
             });
     }
 };
