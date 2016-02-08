@@ -10,9 +10,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as FeedActions from '../actions/feeds';
 import * as EpisodeActions from '../actions/episodes';
-import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
-import MainSection from '../components/MainSection';
+import UI from './UI';
+import Sidebar from './Sidebar';
+
 
 class App extends Component {
     constructor(props) {
@@ -33,18 +33,17 @@ class App extends Component {
 
         return (
             <div>
-                <Sidebar feeds={feeds}
+                <Sidebar
+                    feeds={feeds}
                     filter={activeFeed}
                     {...feedActions}
                 />
-                <div className="main">
-                    <Header />
-                    <MainSection episodes={episodes}
-                        activeFeed={activeFeed}
-                        activeEpisode={activeEpisode}
-                        {...episodeActions}
-                    />
-                </div>
+                <UI
+                    episodes={episodes}
+                    activeFeed={activeFeed}
+                    activeEpisode={activeEpisode}
+                    {...episodeActions}
+                />
             </div>
         )
     };

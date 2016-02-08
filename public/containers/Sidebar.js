@@ -10,7 +10,7 @@ import React, { PropTypes, Component } from 'react';
 // Constants
 import { SHOW_ALL } from '../constants/Filters';
 // Components
-import Feed from './Feed';
+import Feed from '../components/Feed';
 
 
 /* Component Definition */
