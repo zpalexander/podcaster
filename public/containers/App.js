@@ -4,11 +4,10 @@
  * Container for the entire
  * web application
  */
+// Libraries
 import React, { Component, PropTypes } from 'react';
 import '!style!css!sass!../styles/styles.scss';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as FeedActions from '../actions/feeds';
+// Containers
 import Sidebar from './Sidebar';
 
 
@@ -17,23 +16,13 @@ class App extends Component {
         super(props);
     };
 
-    componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch(FeedActions.fetchFeeds());
-    };
-
     render() {
         var self = this;
-        const { children, feeds, activeFeed, dispatch } = self.props;
-        let feedActions = bindActionCreators(FeedActions, dispatch);
+        const { children } = self.props;
 
         return (
             <div>
-                <Sidebar
-                    feeds={feeds}
-                    filter={activeFeed}
-                    {...feedActions}
-                />
+                <Sidebar />
                 {children}
             </div>
         )
@@ -41,22 +30,8 @@ class App extends Component {
 };
 
 App.propTypes = {
-    children: PropTypes.object.isRequired,
-    feeds: PropTypes.array.isRequired,
-    activeFeed: PropTypes.string.isRequired,
-    dispatch: PropTypes.func.isRequired
+    children: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-    return {
-        feeds: state.feeds,
-        episodes: state.episodes,
-        activeFeed: state.activeFeed,
-        activeEpisode: state.activeEpisode
-    }
-}
 
-
-export default connect(
-    mapStateToProps
-)(App);
+export default App;
