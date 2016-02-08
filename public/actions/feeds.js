@@ -34,7 +34,7 @@ export function receiveFeeds(feeds) {
 
 export function fetchFeeds() {
     const origin = (typeof(window) !== 'undefined') ? window.location.origin : 'http://localhost:3000';
-    const uri = origin + '/feeds';
+    const uri = origin + '/api/feeds';
     return dispatch => {
         dispatch(requestFeeds())
         return fetch(uri)

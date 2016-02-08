@@ -21,7 +21,7 @@ export function UItoggleUnplayed(episodeName) {
 
 export function toggleUnplayed(unplayedStatus, episodeName) {
     const origin = (typeof(window) !== 'undefined') ? window.location.origin : 'http://localhost:3000';
-    const uri = origin + '/episode/toggleUnplayed';
+    const uri = origin + '/api/episode/toggleUnplayed';
     const body = {
         unplayedStatus: unplayedStatus,
         episodeName: episodeName
@@ -68,7 +68,7 @@ export function receiveEpisodes(episodes) {
 
 export function fetchEpisodes() {
     const origin = (typeof(window) !== 'undefined') ? window.location.origin : 'http://localhost:3000';
-    const uri = origin + '/episodes';
+    const uri = origin + '/api/episodes';
     return dispatch => {
         dispatch(requestEpisodes());
         return fetch(uri)

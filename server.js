@@ -37,14 +37,14 @@
 
     /* Declare Endpoints */
     // Feed
-    app.get('/feeds/', feeds.getFeeds);
-    app.get('/feed/:feedID', feeds.getEpisodes);
+    app.get('/api/feeds/', feeds.getFeeds);
+    app.get('/api/feed/:feedID', feeds.getEpisodes);
     app.post('/api/feed/add', feeds.addFeed);
-    app.post('/feed/update', feeds.refreshEpisodes);
-    app.post('/feed/delete', feeds.deleteFeed);
+    app.post('/api/feed/update', feeds.refreshEpisodes);
+    app.post('/api/feed/delete', feeds.deleteFeed);
     // Episode
-    app.get('/episodes/', episodes.get);
-    app.post('/episode/toggleUnplayed', episodes.toggleUnplayed);
+    app.get('/api/episodes/', episodes.get);
+    app.post('/api/episode/toggleUnplayed', episodes.toggleUnplayed);
     // View
     app.get('/*', function(req, res) {
         res.sendFile(path.resolve(__dirname + '/public/index.html'));
