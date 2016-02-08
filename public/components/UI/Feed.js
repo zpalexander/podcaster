@@ -25,7 +25,7 @@ class Feed extends Component {
         const { feed, filterHandler, activeFilter } = this.props;
         let classes = this.buildClasses(feed, activeFilter);
 
-        return(
+        return (
             <div className={classes} onClick={filterHandler.bind(this, feed._id)} >
                 <Link to='/'>{feed.name}</Link>
             </div>

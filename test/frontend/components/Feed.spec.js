@@ -21,7 +21,7 @@ const filterHandler = () => {};
 /* Helpers */
 const buildComponent = (id = '', name = '', activeFilter = '') => {
     let feed = {
-        id: id,
+        _id: id,
         name: name
     };
 
