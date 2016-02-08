@@ -29,7 +29,6 @@ class Sidebar extends Component {
         dispatch(FeedActions.fetchFeeds());
     };
 
-
     renderEmpty() {
         return (<div>No feeds</div>);
     };
@@ -79,7 +78,11 @@ class Sidebar extends Component {
 
         return (
             <section className="sidebar">
-                <div className="add-feed"><Link to='add'>Add Content</Link></div>
+                <div className="add-feed">
+                    <Link to='add' onClick={setActiveFeed.bind(this, '')}>
+                        Add Content
+                    </Link>
+                </div>
                 { content }
             </section>
         );
