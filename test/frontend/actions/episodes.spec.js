@@ -67,17 +67,17 @@ describe('Frontend - Actions: Episodes', () => {
         expect(actions.receiveEpisodes(episodes)).toEqual(expectedAction);
     });
 
-    it('should create an action that queries the backend for episodes', (done) => {
-        var nockScope = nock('http://localhost:3000')
-            .get('/episodes')
-            .reply(200, ['One', 'Two', 'Three'] );
+    // it('should create an action that queries the backend for episodes', (done) => {
+    //     nock('http://localhost:3000')
+    //         .get('/episodes')
+    //         .reply(200, ['One', 'Two', 'Three'] );
 
-        const expectedActions = [
-            { type: types.REQUEST_EPISODES },
-            { type: types.RECEIVE_EPISODES, episodes: ['One', 'Two', 'Three'] }
-        ];
-        const store = mockStore({episodes: []}, expectedActions, done);
-        store.dispatch(actions.fetchEpisodes());
-    });
+    //     const expectedActions = [
+    //         { type: types.REQUEST_EPISODES },
+    //         { type: types.RECEIVE_EPISODES, episodes: ['One', 'Two', 'Three'] }
+    //     ];
+    //     const store = mockStore({episodes: []}, expectedActions, done);
+    //     store.dispatch(actions.fetchEpisodes());
+    // });
 
 });

@@ -38,13 +38,4 @@ describe('Frontend - Components: EpDetails', () => {
         expect(actualElement.props.className).toContain(expectedClassname);
     });
 
-    it('should render an audio element that contains the episode streaming URL', () => {
-        let sampleEpisode = {
-            url: 'http://www.google.com/'
-        };
-        let actualElement = buildComponent(sampleEpisode);
-        expect(actualElement.props.children.type).toEqual('audio');
-        expect(actualElement.props.children.props.children[0].props.src).toEqual(sampleEpisode.url);
-    });
-
 });
