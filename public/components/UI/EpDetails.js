@@ -19,6 +19,9 @@ class EpDetails extends Component {
 
         return (
             <div className={classes}>
+                <div className='description'>
+                    {episode.description}
+                </div>
                 <audio controls preload="none">
                     <source src={sourceURL} type="audio/mpeg"></source>
                     Your browser does not support the audio element.

@@ -4,9 +4,17 @@
  * Styles for the Episode component
  */
 
+.episode-wrapper {
+    padding-left: 10px;
+    border-top: 1px solid #D3D3D3;
+
+    &.active {
+        background: #E6E6E6;
+    }
+}
+
 .episode-info {
     cursor: pointer;
-    border-top: 1px solid #D3D3D3;
     padding: 2px 0;
 
     &:hover {
@@ -38,5 +46,18 @@
 }
 
 .episode-details {
+    background: #E6E6E6;
 
+    .description {
+        width: 50%;
+        padding-top: 2%;
+        margin: 0 0 0 15%;
+    }
+
+    audio {
+        display: block;
+        width: 50%;
+        margin: 2% 0 0 15%;
+        padding-bottom: 2%;
+    }
 }
