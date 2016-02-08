@@ -16,18 +16,21 @@
     h1 {
         margin: 0 0 0 10px;
         line-height: 60px;
-        width: 75%;
         display: inline-block;
+        float: left;
     }
 
-    .refresh-icon {
+    .action-icons {
         display: inline-block;
-        cursor: pointer;
+        float: right;
+        width: 410px;
+        padding: 12.5px 0;
 
         svg {
+            cursor: pointer;
             width: 35px;
             height: 35px;
-            margin-top: -10px;
+            padding-right: 5px;
         }
     }
 }
