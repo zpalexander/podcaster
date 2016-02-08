@@ -4,9 +4,18 @@
  * Styles for the Episode component
  */
 
+.episode-wrapper {
+    overflow: auto;
+    padding-left: 10px;
+    border-top: 1px solid #D3D3D3;
+
+    &.active {
+        background: #E6E6E6;
+    }
+}
+
 .episode-info {
     cursor: pointer;
-    border-top: 1px solid #D3D3D3;
     padding: 2px 0;
 
     &:hover {
@@ -32,10 +41,38 @@
     .date {
         float: right;
         font-size: .75em;
+        margin-top: 2px;
     }
 
 }
 
 .episode-details {
+    background: #E6E6E6;
+
+    .episode-image {
+        float: left;
+        width: 15%;
+        padding-top: 2%;
+
+        img {
+            width: 60%;
+            height: auto;
+        }
+    }
+
+    .episode-info {
+        width: 50%;
+        float: left;
+
+        .description {
+            padding-top: 2%;
+            padding-bottom: 2%;
+        }
+
+        audio {
+            display: block;
+            padding-bottom: 2%;
+        }
+    }
 
 }

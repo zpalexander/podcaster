@@ -14,7 +14,6 @@
     var cors                 = require('cors');
     var mongoose             = require('mongoose');
     // Route handlers
-    var view                 = require('./server/routes/view');
     var feeds                = require('./server/routes/feeds');
     var episodes             = require('./server/routes/episodes');
 
@@ -38,16 +37,18 @@
 
     /* Declare Endpoints */
     // Feed
-    app.get('/feeds/', feeds.getFeeds);
-    app.get('/feed/:feedID', feeds.getEpisodes);
-    app.post('/feed/add', feeds.addFeed);
-    app.post('/feed/update', feeds.refreshEpisodes);
-    app.post('/feed/delete', feeds.deleteFeed);
+    app.get('/api/feeds/', feeds.getFeeds);
+    app.get('/api/feed/:feedID', feeds.getEpisodes);
+    app.post('/api/feed/add', feeds.addFeed);
+    app.post('/api/feed/update', feeds.refreshEpisodes);
+    app.post('/api/feed/delete', feeds.deleteFeed);
     // Episode
-    app.get('/episodes/', episodes.get);
-    app.post('/episode/toggleUnplayed', episodes.toggleUnplayed);
+    app.get('/api/episodes/', episodes.get);
+    app.post('/api/episode/toggleUnplayed', episodes.toggleUnplayed);
     // View
-    app.get('/*', view.show);
+    app.get('/*', function(req, res) {
+        res.sendFile(path.resolve(__dirname + '/public/index.html'));
+    });
 
 
     /* Start Server Listening */

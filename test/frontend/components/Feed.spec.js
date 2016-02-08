@@ -6,13 +6,12 @@
 /* Dependencies */
 // Libraries and testing utilities
 import React from 'react';
-import moment from 'moment';
 import expect from 'expect';
 import expectJSX from 'expect-jsx';
 import {createRenderer} from 'react-addons-test-utils';
 expect.extend(expectJSX);
 // Component
-import Feed from '../../../public/components/Feed';
+import Feed from '../../../public/components/UI/Feed';
 
 
 /* Mocks */
@@ -22,7 +21,7 @@ const filterHandler = () => {};
 /* Helpers */
 const buildComponent = (id = '', name = '', activeFilter = '') => {
     let feed = {
-        id: id,
+        _id: id,
         name: name
     };
 
@@ -57,12 +56,12 @@ describe('Frontend - Components: Feed', () => {
         expect(actualElement.props.className).toContain('active');
     });
 
-    it('displays the name of the feed as its only child', () => {
+    it('displays the name of the feed', () => {
         let id = 'abcdef';
         let name = 'My Feed';
         let expectedResult = 'My Feed';
         let actualElement = buildComponent(id, name, id);
-        expect(actualElement.props.children).toEqual(expectedResult);
+        expect(actualElement.props.children.props.children).toEqual(expectedResult);
     });
 
 });

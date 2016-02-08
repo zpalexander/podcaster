@@ -15,6 +15,7 @@
         feedName: {type: String},
         description: {type: String},
         url:  {type : String},
+        image: { type: String },
         pubDate: {type: Date},
         playPosition: {type: Number},
         unplayed: {type: Boolean}

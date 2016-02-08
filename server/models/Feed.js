@@ -9,9 +9,8 @@
     var Promise  = require('bluebird');
 
     var feedSchema = new mongoose.Schema({
-        id   : {type: String, unique: true},
-        name : {type : String, unique: true},
-        url :  {type : String},
+        name: {type : String, unique: true},
+        url: {type : String},
         category: {type : String}
     }, {versionKey : false});
 

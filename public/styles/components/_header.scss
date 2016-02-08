@@ -16,5 +16,21 @@
     h1 {
         margin: 0 0 0 10px;
         line-height: 60px;
+        display: inline-block;
+        float: left;
+    }
+
+    .action-icons {
+        display: inline-block;
+        float: right;
+        width: 410px;
+        padding: 12.5px 0;
+
+        svg {
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            padding-right: 5px;
+        }
     }
 }

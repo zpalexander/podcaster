@@ -8,7 +8,7 @@
 // Libraries
 import React, { PropTypes, Component } from 'react';
 // Constants
-import { SHOW_ALL } from '../constants/Filters';
+import { SHOW_ALL } from '../../constants/Filters';
 // Components
 import Episode from './Episode';
 
@@ -36,9 +36,6 @@ class MainSection extends Component {
 
     renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed) {
         let content = false;
-        if (!filteredEpisodes) {
-            content = ( <div>No Episodes</div> )
-        }
         if (filteredEpisodes.length !== 0) {
             content = (
                 <div>
@@ -54,7 +51,7 @@ class MainSection extends Component {
                 </div>
             )
         } else {
-           content = ( <div className="episodes">No episodes</div> );
+           content = ( <div className="no-episodes">No Episodes</div> );
         }
         return content;
     };
@@ -63,8 +60,8 @@ class MainSection extends Component {
         const { episodes, activeFeed, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed } = this.props;
 
         let filteredEpisodes = this.filterEpisodes(episodes, activeFeed);
-        //console.log('filteredEpisodes', filteredEpisodes);
         let content = this.renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed);
+
         return (
             <section className="content">
                 { content }

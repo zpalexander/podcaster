@@ -28,7 +28,7 @@
     };
 
     exports.refreshEpisodes = function(req, res) {
-        var feedID = req.body.id;
+        var feedID = req.body._id;
         refreshFeedEpisodes(feedID)
             .then(function(result) {
                 res.status(result.status).send('Feed "' + feedID + '" refreshed successfully');
@@ -51,7 +51,6 @@
 
     exports.addFeed = function(req, res) {
         var feedParams = {
-            id: req.body.id,
             name: req.body.name,
             url: req.body.url,
             category: req.body.category

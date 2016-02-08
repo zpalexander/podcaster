@@ -6,13 +6,12 @@
 /* Dependencies */
 // Libraries and testing utilities
 import React from 'react';
-import moment from 'moment';
 import expect from 'expect';
 import expectJSX from 'expect-jsx';
 import {createRenderer} from 'react-addons-test-utils';
 expect.extend(expectJSX);
 // Component
-import Header from '../../../public/components/Header';
+import Header from '../../../public/components/UI/Header';
 
 
 /* Helpers */

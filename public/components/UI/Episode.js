@@ -29,7 +29,7 @@ class Episode extends Component {
 
     renderActiveEpisode(episode, activeEpisodeHandler, actionClasses, detailsClasses, toggleUnplayed) {
         return (
-            <div className="episode-wrapper">
+            <div className="episode-wrapper active">
                 <EpisodeInfo episode={episode}
                     actionClasses={actionClasses}
                     detailsClasses={detailsClasses}

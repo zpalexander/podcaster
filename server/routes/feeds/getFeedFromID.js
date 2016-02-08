@@ -11,8 +11,8 @@
     var errors = require('../../util/errors');
 
     /* Logic */
-    exports.get = function(id) {
-        return Feed.findAsync({'id': id})
+    exports.get = function(_id) {
+        return Feed.findAsync({'_id': _id})
             .then(function(feed) {
                 if (feed.length > 0) {
                     return { body: feed, status: 200};
