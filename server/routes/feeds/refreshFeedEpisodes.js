@@ -70,6 +70,7 @@
         feedparser.on('end', function() {
             var i = -1;
             var feedEpisodes = episodes.map(function(episode) {
+                var imageURL = _.get(episode, 'meta.image.url', '');
                 i++;
                 return new Episode({
                     id: i,
@@ -78,6 +79,7 @@
                     feedName: feedName,
                     description: episode.description.replace(/(<([^>]+)>)/ig,""),
                     url: episode.fileURL,
+                    image: imageURL,
                     pubDate: new Date(episode.pubdate),
                     playPosition: 0,
                     unplayed: true

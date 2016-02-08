@@ -5,6 +5,7 @@
  */
 
 .episode-wrapper {
+    overflow: auto;
     padding-left: 10px;
     border-top: 1px solid #D3D3D3;
 
@@ -48,16 +49,30 @@
 .episode-details {
     background: #E6E6E6;
 
-    .description {
-        width: 50%;
+    .episode-image {
+        float: left;
+        width: 15%;
         padding-top: 2%;
-        margin: 0 0 0 15%;
+
+        img {
+            width: 60%;
+            height: auto;
+        }
     }
 
-    audio {
-        display: block;
+    .episode-info {
         width: 50%;
-        margin: 2% 0 0 15%;
-        padding-bottom: 2%;
+        float: left;
+
+        .description {
+            padding-top: 2%;
+            padding-bottom: 2%;
+        }
+
+        audio {
+            display: block;
+            padding-bottom: 2%;
+        }
     }
+
 }

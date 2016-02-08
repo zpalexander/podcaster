@@ -29,9 +29,6 @@ class Sidebar extends Component {
         dispatch(FeedActions.fetchFeeds());
     };
 
-    renderEmpty() {
-        return (<div>No feeds</div>);
-    };
 
     renderFeedList(feeds, filter, pathname, setActiveFeed) {
         const allFeeds = {
@@ -60,11 +57,9 @@ class Sidebar extends Component {
     };
 
 
-    renderContent(feeds, filter, pathname, setActiveFeed, renderEmpty, renderFeedList) {
+    renderContent(feeds, filter, pathname, setActiveFeed, renderFeedList) {
         let content = false;
-        if (feeds.length === 0) {
-            content = renderEmpty();
-        } else {
+        if (feeds.length > 0) {
             content = renderFeedList(feeds, filter, pathname, setActiveFeed);
         }
         return content;
@@ -77,7 +72,7 @@ class Sidebar extends Component {
         const feedActions = bindActionCreators(FeedActions, dispatch);
         const { setActiveFeed } = feedActions;
         const { pathname } = location;
-        let content = this.renderContent(feeds, activeFeed, pathname, setActiveFeed, this.renderEmpty, this.renderFeedList);
+        let content = this.renderContent(feeds, activeFeed, pathname, setActiveFeed, this.renderFeedList);
 
         return (
             <section className="sidebar">

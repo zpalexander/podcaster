@@ -15,17 +15,23 @@ class EpDetails extends Component {
     render() {
         const { episode, detailsClasses } = this.props;
         let sourceURL = episode.url;
+        let imageURL = episode.image;
         let classes = 'episode-details ' + detailsClasses;
 
         return (
             <div className={classes}>
-                <div className='description'>
-                    {episode.description}
+                <div className='episode-image'>
+                    <img src={imageURL} />
                 </div>
-                <audio controls preload="none">
-                    <source src={sourceURL} type="audio/mpeg"></source>
-                    Your browser does not support the audio element.
-                </audio>
+                <div className='episode-info'>
+                    <div className='description'>
+                        {episode.description}
+                    </div>
+                    <audio controls preload="none">
+                        <source src={sourceURL} type="audio/mpeg"></source>
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
             </div>
         );
 
