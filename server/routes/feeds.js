@@ -51,7 +51,6 @@
 
     exports.addFeed = function(req, res) {
         var feedParams = {
-            id: req.body.id,
             name: req.body.name,
             url: req.body.url,
             category: req.body.category

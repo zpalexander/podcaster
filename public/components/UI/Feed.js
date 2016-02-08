@@ -15,7 +15,7 @@ class Feed extends Component {
 
     buildClasses(feed, activeFilter) {
         let classes = 'feed';
-        if (feed.id === activeFilter) {
+        if (feed._id === activeFilter) {
             classes += ' active';
         }
         return classes;
@@ -26,7 +26,7 @@ class Feed extends Component {
         let classes = this.buildClasses(feed, activeFilter);
 
         return(
-            <div className={classes} onClick={filterHandler.bind(this, feed.id)} >
+            <div className={classes} onClick={filterHandler.bind(this, feed._id)} >
                 <Link to='/'>{feed.name}</Link>
             </div>
         );

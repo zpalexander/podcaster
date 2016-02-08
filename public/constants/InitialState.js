@@ -10,7 +10,13 @@ const initialState = {
     feeds: [],
     episodes: [],
     activeFeed: SHOW_ALL,
-    activeEpisode: ''
+    activeEpisode: '',
+    addFeed: {
+        newFeedName: '',
+        newFeedURL: '',
+        newFeedCategory: '',
+        isAdding: false
+    }
 };
 
 export default initialState;

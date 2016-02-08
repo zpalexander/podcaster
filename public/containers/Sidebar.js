@@ -36,18 +36,18 @@ class Sidebar extends Component {
     renderFeedList(feeds, filter, setActiveFeed) {
         const allFeeds = {
             name: 'Show All',
-            id: SHOW_ALL
+            _id: SHOW_ALL
         };
 
         return (
             <div>
-                <Feed key={allFeeds.id}
+                <Feed key={allFeeds._id}
                     feed={allFeeds}
                     filterHandler={setActiveFeed}
                     activeFilter={filter}
                 />
                 {feeds.map(feed =>
-                    <Feed key={feed.id}
+                    <Feed key={feed._id}
                         feed={feed}
                         filterHandler={setActiveFeed}
                         activeFilter={filter}

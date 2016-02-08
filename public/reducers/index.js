@@ -9,12 +9,14 @@ import feeds from './feeds';
 import episodes from './episodes';
 import activeFeed from './activeFeed';
 import activeEpisode from './activeEpisode';
+import addFeed from './addFeed';
 
 const rootReducer = combineReducers({
     feeds,
     episodes,
     activeFeed,
     activeEpisode,
+    addFeed,
     routing: routeReducer
 });
 
