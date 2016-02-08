@@ -1,4 +1,5 @@
 (function() {
+    'use strict';
     /* Initialize App Dependencies */
     // Webpack dependencies
     var webpack              = require('webpack');
