@@ -16,8 +16,8 @@ import * as types from '../../../public/constants/ActionTypes';
 
 
 /* Mocks */
-const middlewares = [ thunk ];
-const mockStore = configureMockStore(middlewares);
+//const middlewares = [ thunk ];
+//const mockStore = configureMockStore(middlewares);
 
 
 /* Tests */
