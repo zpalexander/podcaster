@@ -13,17 +13,17 @@ class Feed extends Component {
         super(props, context)
     };
 
-    buildClasses(feed, activeFilter) {
+    buildClasses(feed, activeFilter, pathname) {
         let classes = 'feed';
-        if (feed._id === activeFilter) {
+        if (feed._id === activeFilter && pathname !== 'add') {
             classes += ' active';
         }
         return classes;
     }
 
     render() {
-        const { feed, filterHandler, activeFilter } = this.props;
-        let classes = this.buildClasses(feed, activeFilter);
+        const { feed, filterHandler, activeFilter, pathname } = this.props;
+        let classes = this.buildClasses(feed, activeFilter, pathname);
 
         return (
             <div className={classes} onClick={filterHandler.bind(this, feed._id)} >
@@ -37,7 +37,8 @@ class Feed extends Component {
 Feed.propTypes = {
     feed: PropTypes.object.isRequired,
     filterHandler: PropTypes.func.isRequired,
-    activeFilter: PropTypes.string.isRequired
+    activeFilter: PropTypes.string.isRequired,
+    pathname: PropTypes.string.isRequired
 };
 
 /* Default Export */

@@ -18,11 +18,13 @@ class App extends Component {
 
     render() {
         var self = this;
-        const { children } = self.props;
+        const { children, location } = self.props;
 
         return (
             <div>
-                <Sidebar />
+                <Sidebar
+                    location={location}
+                />
                 {children}
             </div>
         )
@@ -30,7 +32,8 @@ class App extends Component {
 };
 
 App.propTypes = {
-    children: PropTypes.object.isRequired
+    children: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
 };
 
 

@@ -33,7 +33,7 @@ class Sidebar extends Component {
         return (<div>No feeds</div>);
     };
 
-    renderFeedList(feeds, filter, setActiveFeed) {
+    renderFeedList(feeds, filter, pathname, setActiveFeed) {
         const allFeeds = {
             name: 'Show All',
             _id: SHOW_ALL
@@ -45,12 +45,14 @@ class Sidebar extends Component {
                     feed={allFeeds}
                     filterHandler={setActiveFeed}
                     activeFilter={filter}
+                    pathname={pathname}
                 />
                 {feeds.map(feed =>
                     <Feed key={feed._id}
                         feed={feed}
                         filterHandler={setActiveFeed}
                         activeFilter={filter}
+                        pathname={pathname}
                     />
                 )}
             </div>
@@ -58,12 +60,12 @@ class Sidebar extends Component {
     };
 
 
-    renderContent(feeds, filter, setActiveFeed, renderEmpty, renderFeedList) {
+    renderContent(feeds, filter, pathname, setActiveFeed, renderEmpty, renderFeedList) {
         let content = false;
         if (feeds.length === 0) {
             content = renderEmpty();
         } else {
-            content = renderFeedList(feeds, filter, setActiveFeed);
+            content = renderFeedList(feeds, filter, pathname, setActiveFeed);
         }
         return content;
 
@@ -71,15 +73,16 @@ class Sidebar extends Component {
 
 
     render() {
-        const { feeds, activeFeed, dispatch } = this.props;
+        const { location, feeds, activeFeed, dispatch } = this.props;
         const feedActions = bindActionCreators(FeedActions, dispatch);
         const { setActiveFeed } = feedActions;
-        let content = this.renderContent(feeds, activeFeed, setActiveFeed, this.renderEmpty, this.renderFeedList);
+        const { pathname } = location;
+        let content = this.renderContent(feeds, activeFeed, pathname, setActiveFeed, this.renderEmpty, this.renderFeedList);
 
         return (
             <section className="sidebar">
                 <div className="new-feed-button">
-                    <Link to='add' onClick={setActiveFeed.bind(this, '')}>
+                    <Link to='add'>
                         Add Content
                     </Link>
                 </div>
@@ -92,6 +95,7 @@ class Sidebar extends Component {
 
 /* Component Prop Types */
 Sidebar.propTypes = {
+    location: PropTypes.object.isRequired,
     feeds: PropTypes.array.isRequired,
     activeFeed: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired
