@@ -6,13 +6,12 @@
 /* Dependencies */
 // Libraries and testing utilities
 import React from 'react';
-import moment from 'moment';
 import expect from 'expect';
 import expectJSX from 'expect-jsx';
 import {createRenderer} from 'react-addons-test-utils';
 expect.extend(expectJSX);
 // Component
-import Feed from '../../../public/components/Feed';
+import Feed from '../../../public/components/UI/Feed';
 
 
 /* Mocks */

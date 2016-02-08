@@ -12,7 +12,7 @@ import expectJSX from 'expect-jsx';
 import {createRenderer} from 'react-addons-test-utils';
 expect.extend(expectJSX);
 // Component
-import EpisodeInfo from '../../../public/components/EpisodeInfo';
+import EpisodeInfo from '../../../public/components/UI/EpisodeInfo';
 
 
 /* Mock Props */

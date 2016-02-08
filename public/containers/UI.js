@@ -13,8 +13,8 @@ import { connect } from 'react-redux';
 // Actions
 import * as EpisodeActions from '../actions/episodes';
 // Components
-import Header from '../components/Header';
-import MainSection from '../components/MainSection';
+import Header from '../components/UI/Header';
+import MainSection from '../components/UI/MainSection';
 
 class UI extends Component {
     constructor(props) {

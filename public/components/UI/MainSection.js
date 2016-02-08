@@ -8,7 +8,7 @@
 // Libraries
 import React, { PropTypes, Component } from 'react';
 // Constants
-import { SHOW_ALL } from '../constants/Filters';
+import { SHOW_ALL } from '../../constants/Filters';
 // Components
 import Episode from './Episode';
 

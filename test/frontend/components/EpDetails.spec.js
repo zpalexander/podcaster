@@ -11,7 +11,7 @@ import expectJSX from 'expect-jsx';
 import {createRenderer} from 'react-addons-test-utils';
 expect.extend(expectJSX);
 // Component
-import EpDetails from '../../../public/components/EpDetails';
+import EpDetails from '../../../public/components/UI/EpDetails';
 
 
 /* Helpers */

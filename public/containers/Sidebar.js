@@ -15,7 +15,7 @@ import * as FeedActions from '../actions/feeds';
 // Constants
 import { SHOW_ALL } from '../constants/Filters';
 // Components
-import Feed from '../components/Feed';
+import Feed from '../components/UI/Feed';
 
 
 /* Component Definition */
