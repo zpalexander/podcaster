@@ -8,10 +8,10 @@
     var Episode = require('../../models/Episode');
     var errors = require('../../util/errors');
 
-    exports.toggle = function(episodeName, unplayedStatus) {
-        var updateConditions = {name: episodeName};
+    exports.toggle = function(episodeIDs, unplayedStatus) {
+        var updateConditions = {'_id': {$in: episodeIDs}};
         var updateValue      = {unplayed: (!unplayedStatus)};
-        var updateOptions    = {multi: false};
+        var updateOptions    = {multi: true};
         return Episode.updateAsync(updateConditions, updateValue, updateOptions)
             .then(function(result) {
                 if (result.nModified === 0) {

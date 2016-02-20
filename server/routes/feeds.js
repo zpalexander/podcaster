@@ -13,7 +13,6 @@
     var getFeeds = require('./feeds/getFeeds').get;
     var getFeedEpisodes = require('./feeds/getFeedEpisodes').get;
     var refreshFeedEpisodes = require('./feeds/refreshFeedEpisodes').refresh;
-    var getFeedFromID = require('./feeds/getFeedFromID').get;
     var addFeed = require('./feeds/addFeed').add;
 
     /* Route Handlers */

@@ -15,6 +15,8 @@ import * as EpisodeActions from '../actions/episodes';
 // Components
 import Header from '../components/UI/Header';
 import MainSection from '../components/UI/MainSection';
+// Constantsa
+import { SHOW_ALL } from '../constants/Filters';
 
 class UI extends Component {
     constructor(props) {
@@ -26,17 +28,36 @@ class UI extends Component {
         dispatch(EpisodeActions.fetchEpisodes());
     };
 
+    filterEpisodes(episodes, activeFeed) {
+        var filteredEpisodes = [];
+        if (activeFeed !== SHOW_ALL) {
+            filteredEpisodes = episodes.filter(episode => {
+                let partOfFilter = false;
+                if (episode.feed === activeFeed) { partOfFilter = true; }
+                return partOfFilter;
+            })
+        } else {
+            filteredEpisodes = episodes;
+        }
+        return filteredEpisodes;
+    };
+
 
     render() {
         const { episodes, activeFeed, activeEpisode, dispatch } = this.props;
         const episodeActions = bindActionCreators(EpisodeActions, dispatch);
         const { setActiveEpisode, unsetActiveEpisode, toggleUnplayed } = episodeActions;
 
+        let filteredEpisodes = this.filterEpisodes(episodes, activeFeed);
+
         return (
             <div className='ui'>
-                <Header />
+                <Header
+                    filteredEpisodes={filteredEpisodes}
+                    toggleUnplayed={toggleUnplayed}
+                />
                 <MainSection
-                    episodes={episodes}
+                    filteredEpisodes={filteredEpisodes}
                     activeFeed={activeFeed}
                     activeEpisode={activeEpisode}
                     setActiveEpisode={setActiveEpisode}

@@ -12,19 +12,20 @@ import * as types from '../constants/ActionTypes'
 
 
 /* Actions */
-export function UItoggleUnplayed(episodeName) {
+export function UItoggleUnplayed(unplayedStatus, episodeIDs) {
     return {
         type: types.TOGGLE_UNPLAYED,
-        episode: episodeName
+        unplayedStatus: unplayedStatus,
+        episodeIDs: episodeIDs
     }
 };
 
-export function toggleUnplayed(unplayedStatus, episodeName) {
+export function toggleUnplayed(unplayedStatus, episodeIDs) {
     const origin = (typeof(window) !== 'undefined') ? window.location.origin : 'http://localhost:3000';
     const uri = origin + '/api/episode/toggleUnplayed';
     const body = {
         unplayedStatus: unplayedStatus,
-        episodeName: episodeName
+        episodeIDs: episodeIDs
     };
     const fetchOptions = {
         method: 'post',
@@ -35,7 +36,7 @@ export function toggleUnplayed(unplayedStatus, episodeName) {
         body: JSON.stringify(body)
     };
     return dispatch => {
-        dispatch(UItoggleUnplayed(episodeName));
+        dispatch(UItoggleUnplayed(unplayedStatus, episodeIDs));
         return fetch(uri, fetchOptions);
     };
 };

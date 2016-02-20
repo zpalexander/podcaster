@@ -25,7 +25,7 @@
 
     exports.toggleUnplayed = function(req, res) {
         var unplayedStatus = stringToBool(req.body.unplayedStatus);
-        var episodeName = req.body.episodeName;
+        var episodeName = req.body.episodeIDs;
         toggleUnplayed(episodeName, unplayedStatus)
             .then(function(response) {
                 res.status(response.status).send(response.message);

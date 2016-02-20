@@ -7,8 +7,6 @@
 /* Dependencies */
 // Libraries
 import React, { PropTypes, Component } from 'react';
-// Constants
-import { SHOW_ALL } from '../../constants/Filters';
 // Components
 import Episode from './Episode';
 
@@ -16,23 +14,8 @@ import Episode from './Episode';
 class MainSection extends Component {
     constructor(props, context) {
         super(props, context)
-        this.filterEpisodes = this.filterEpisodes.bind(this);
     };
 
-
-    filterEpisodes(episodes, activeFeed) {
-        var filteredEpisodes = [];
-        if (activeFeed !== SHOW_ALL) {
-            filteredEpisodes = episodes.filter(episode => {
-                let partOfFilter = false;
-                if (episode.feed === activeFeed) { partOfFilter = true; }
-                return partOfFilter;
-            })
-        } else {
-            filteredEpisodes = episodes;
-        }
-        return filteredEpisodes;
-    };
 
     renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed) {
         let content = false;
@@ -57,9 +40,7 @@ class MainSection extends Component {
     };
 
     render() {
-        const { episodes, activeFeed, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed } = this.props;
-
-        let filteredEpisodes = this.filterEpisodes(episodes, activeFeed);
+        const { filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed } = this.props;
         let content = this.renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed);
 
         return (
@@ -73,8 +54,7 @@ class MainSection extends Component {
 
 /* Component Prop Types */
 MainSection.propTypes = {
-    episodes: PropTypes.array.isRequired,
-    activeFeed: PropTypes.string.isRequired,
+    filteredEpisodes: PropTypes.array.isRequired,
     activeEpisode: PropTypes.string.isRequired,
     setActiveEpisode: PropTypes.func.isRequired,
     unsetActiveEpisode: PropTypes.func.isRequired,
