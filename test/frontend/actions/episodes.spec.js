@@ -27,12 +27,14 @@ describe('Frontend - Actions: Episodes', () => {
     });
 
     it('should create an action to toggle unplayed status', () => {
+        const unplayedStatus = false;
         const episodeIDs = [1];
         const expectedAction = {
             type: types.TOGGLE_UNPLAYED,
+            unplayedStatus: unplayedStatus,
             episodeIDs: episodeIDs
         };
-        expect(actions.UItoggleUnplayed(episodeIDs)).toEqual(expectedAction);
+        expect(actions.UItoggleUnplayed(unplayedStatus, episodeIDs)).toEqual(expectedAction);
     });
 
     it('should create an action to set the active episode', () => {

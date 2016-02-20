@@ -19,7 +19,7 @@ export default function episodes(state = initialState.episodes, action) {
                 var modifiedEpisode;
                 if (modifiedEpisodeIDs.indexOf(episode._id) > -1) {
                     modifiedEpisode = Object.assign({}, episode, {
-                        unplayed: !episode.unplayed
+                        unplayed: !action.unplayedStatus
                     });
                 } else {
                     modifiedEpisode = episode;

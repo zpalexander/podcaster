@@ -12,9 +12,10 @@ import * as types from '../constants/ActionTypes'
 
 
 /* Actions */
-export function UItoggleUnplayed(episodeIDs) {
+export function UItoggleUnplayed(unplayedStatus, episodeIDs) {
     return {
         type: types.TOGGLE_UNPLAYED,
+        unplayedStatus: unplayedStatus,
         episodeIDs: episodeIDs
     }
 };
@@ -35,7 +36,7 @@ export function toggleUnplayed(unplayedStatus, episodeIDs) {
         body: JSON.stringify(body)
     };
     return dispatch => {
-        dispatch(UItoggleUnplayed(episodeIDs));
+        dispatch(UItoggleUnplayed(unplayedStatus, episodeIDs));
         return fetch(uri, fetchOptions);
     };
 };

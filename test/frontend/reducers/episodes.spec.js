@@ -61,6 +61,7 @@ describe('Frontend - Reducers: episodes', () => {
         let sampleEpisodeIDs = [1, 2];
         let sampleAction = {
             type: TOGGLE_UNPLAYED,
+            unplayedStatus: true,
             episodeIDs: sampleEpisodeIDs
         };
         let expectedResult = [
