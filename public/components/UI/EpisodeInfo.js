@@ -27,7 +27,7 @@ class EpisodeInfo extends Component {
 
     handleClick(episode, activeEpisodeHandler, toggleUnplayed) {
         activeEpisodeHandler(episode._id);
-        if (episode.unplayed) { toggleUnplayed(episode.unplayed, episode.name); }
+        if (episode.unplayed) { toggleUnplayed(episode.unplayed, [episode._id]); }
     };
 
 

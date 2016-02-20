@@ -19,7 +19,7 @@ const initialState = [];
 
 
 /* Tests */
-describe('Frontend - Reducers: activeFeed', () => {
+describe('Frontend - Reducers: episodes', () => {
     it('should return the correct initial state', () => {
         expect(reducer(undefined, {})).toEqual(initialState);
     });
@@ -43,33 +43,39 @@ describe('Frontend - Reducers: activeFeed', () => {
     it('should handle ' + TOGGLE_UNPLAYED, () => {
         let sampleEpisodes = [
             {
+                _id: 1,
                 name: 'episode1',
                 unplayed: true
             },
             {
+                _id: 2,
                 name: 'episode2',
                 unplayed: true
             },
             {
+                _id: 3,
                 name: 'episode3',
                 unplayed: true
             }
         ];
-        let sampleEpisodeName = 'episode2';
+        let sampleEpisodeIDs = [1, 2];
         let sampleAction = {
             type: TOGGLE_UNPLAYED,
-            episode: sampleEpisodeName
+            episodeIDs: sampleEpisodeIDs
         };
         let expectedResult = [
             {
+                _id: 1,
                 name: 'episode1',
-                unplayed: true
+                unplayed: false
             },
             {
+                _id: 2,
                 name: 'episode2',
                 unplayed: false
             },
             {
+                _id: 3,
                 name: 'episode3',
                 unplayed: true
             }
