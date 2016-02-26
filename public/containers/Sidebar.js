@@ -7,11 +7,7 @@
 /* Dependencies */
 // Libraries
 import React, { PropTypes, Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
-// Actions
-import * as FeedActions from '../actions/feeds';
 // Constants
 import { SHOW_ALL } from '../constants/Filters';
 // Components
@@ -22,11 +18,6 @@ import Feed from '../components/UI/Feed';
 class Sidebar extends Component {
     constructor(props, context) {
         super(props, context);
-    };
-
-    componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch(FeedActions.fetchFeeds());
     };
 
 
@@ -68,18 +59,14 @@ class Sidebar extends Component {
 
 
     render() {
-        const { location, feeds, activeFeed, dispatch } = this.props;
-        const feedActions = bindActionCreators(FeedActions, dispatch);
-        const { setActiveFeed } = feedActions;
+        const { location, feeds, activeFeed, setActiveFeed } = this.props;
         const { pathname } = location;
         let content = this.renderContent(feeds, activeFeed, pathname, setActiveFeed, this.renderFeedList);
 
         return (
             <section className="sidebar">
                 <div className="new-feed-button">
-                    <Link to='add'>
-                        Add Content
-                    </Link>
+                    <Link to='add'>Add Content</Link>
                 </div>
                 { content }
             </section>
@@ -93,18 +80,8 @@ Sidebar.propTypes = {
     location: PropTypes.object.isRequired,
     feeds: PropTypes.array.isRequired,
     activeFeed: PropTypes.string.isRequired,
-    dispatch: PropTypes.func.isRequired
+    setActiveFeed: PropTypes.func.isRequired
 };
 
 
-function mapStateToProps(state) {
-    return {
-        feeds: state.feeds,
-        activeFeed: state.activeFeed
-    }
-};
-
-
-export default connect(
-    mapStateToProps
-)(Sidebar);
+export default Sidebar;

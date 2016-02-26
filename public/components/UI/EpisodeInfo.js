@@ -37,7 +37,8 @@ class EpisodeInfo extends Component {
         let date = this.renderDate(episode.pubDate);
 
         return (
-            <div className={actionClasses}
+            <div
+                className={actionClasses}
                 onClick={this.handleClick.bind(this, episode, activeEpisodeHandler, toggleUnplayed)}
             >
                 <span className="feed-name">{episode.feedName}</span>

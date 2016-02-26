@@ -12,6 +12,8 @@ export const SELECT_FEED = 'SELECT_FEED';
 export const REQUEST_FEEDS = 'REQUEST_FEEDS';
 export const RECEIVE_FEEDS = 'RECEIVE_FEEDS';
 export const SET_ACTIVE_FEED = 'SET_ACTIVE_FEED';
+export const REQUEST_REFRESH = 'REQUEST_REFRESH';
+export const COMPLETE_REFRESH = 'COMPLETE_REFRESH';
 
 // Episode actions
 export const TOGGLE_UNPLAYED = 'TOGGLE_UNPLAYED';

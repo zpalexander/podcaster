@@ -12,6 +12,8 @@ import * as types from '../constants/ActionTypes';
 
 
 /* Actions */
+
+// Active Feed
 export function setActiveFeed(feed) {
     return {
         type: types.SET_ACTIVE_FEED,
@@ -19,6 +21,7 @@ export function setActiveFeed(feed) {
     }
 };
 
+// Fetch Feeds
 export function requestFeeds() {
     return {
         type: types.REQUEST_FEEDS
