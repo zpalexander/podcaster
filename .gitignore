@@ -2,9 +2,10 @@
 ##################
 node_modules/*
 
-# Logs #
+# Logs and Reports #
 ######################
 *.log
+.nyc_output/*
 
 # OS generated files #
 ######################
