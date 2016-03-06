@@ -23,7 +23,7 @@ class EpDetails extends Component {
                 <div className='episode-image'>
                     <img src={imageURL} />
                 </div>
-                <div className='episode-info'>
+                <div className='episode-particulars'>
                     <div className='description'>
                         {episode.description}
                     </div>

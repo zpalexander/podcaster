@@ -6,21 +6,21 @@
 
 .episode-wrapper {
     overflow: auto;
-    padding-left: 10px;
     border-top: 1px solid #D3D3D3;
 
+
     &.active {
+        background: #E6E6E6;
+    }
+
+    .episode-info:hover {
         background: #E6E6E6;
     }
 }
 
 .episode-info {
     cursor: pointer;
-    padding: 2px 0;
-
-    &:hover {
-        background: #E6E6E6;
-    }
+    padding: 2px 10px;
 
     &.unplayed {
         .episode-name {
@@ -60,7 +60,7 @@
         }
     }
 
-    .episode-info {
+    .episode-particulars {
         width: 50%;
         float: left;
 

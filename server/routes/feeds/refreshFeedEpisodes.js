@@ -14,13 +14,14 @@
     var _ = require('lodash');
     /* Helpers */
     var getFeedFromID = require('./getFeedFromID').get;
+    var getFeedEpisodes = require('./getFeedEpisodes').get;
 
 
     exports.refresh = function(feedID) {
         return getFeedFromID(feedID)
             .then(function(response) {
                 if (response instanceof Error) { throw response; }
-                return downloadFeeds(response, feedID);
+                return downloadEpisodes(response, feedID);
             })
             .then(function(result) {
                 return { body: result, status: 200 };
@@ -31,7 +32,7 @@
     };
 
 
-    var downloadFeeds = function(response, feedID) {
+    var downloadEpisodes = function(response, feedID) {
         var feedName = response.body[0].name;
         var feedURL = response.body[0].url;
         var req = request(feedURL);
@@ -68,25 +69,45 @@
         });
 
         feedparser.on('end', function() {
-            var i = -1;
-            var feedEpisodes = episodes.map(function(episode) {
-                var imageURL = _.get(episode, 'meta.image.url', '');
-                i++;
-                return new Episode({
-                    id: i,
-                    name: episode.title,
-                    feed: feedID,
-                    feedName: feedName,
-                    description: episode.description.replace(/(<([^>]+)>)/ig,""),
-                    url: episode.fileURL,
-                    image: imageURL,
-                    pubDate: new Date(episode.pubdate),
-                    playPosition: 0,
-                    unplayed: true
-                });
-            });
-            return Episode.createAsync(feedEpisodes);
+            return saveEpisodes(episodes, feedID, feedName);
         });
+    };
+
+
+    var saveEpisodes = function(newEpisodes, feedID, feedName) {
+        return getFeedEpisodes(feedID)
+            .then(function(feedEpisodes) {
+                var filteredNewEpisodes = [];
+                var existingEpisodeNames = feedEpisodes.body.map((episode) => {
+                    return episode.name;
+                });
+                // If any episode titles match, remove them from the list
+                newEpisodes.forEach((episode) => {
+                    if (existingEpisodeNames.indexOf(episode.title) === -1) {
+                        filteredNewEpisodes.push(episode);
+                    }
+                })
+                return filteredNewEpisodes;
+            })
+            .then(function(filteredNewEpisodes) {
+                var newEpisodesSchema = filteredNewEpisodes.map(function(episode) {
+                    var imageURL = _.get(episode, 'meta.image.url', '');
+                    return new Episode({
+                        name: episode.title,
+                        feed: feedID,
+                        feedName: feedName,
+                        description: episode.description.replace(/(<([^>]+)>)/ig,""),
+                        url: episode.fileURL,
+                        image: imageURL,
+                        pubDate: new Date(episode.pubdate),
+                        playPosition: 0,
+                        unplayed: true
+                    });
+
+                });
+                return Episode.createAsync(newEpisodesSchema);
+            })
+
     };
 
 }());

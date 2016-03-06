@@ -5,8 +5,10 @@
      *
      * Logic for feed operations
      */
-
-    // I should switch to node-feedparser
+    /* Dependencies */
+    // Libraries
+    var Promise = require('bluebird');
+    // Logic
     var Feed     = require('../models/Feed.js');
 
     /* Logic */
@@ -27,10 +29,14 @@
     };
 
     exports.refreshEpisodes = function(req, res) {
-        var feedID = req.body._id;
-        refreshFeedEpisodes(feedID)
+        var feedIDs = req.body._ids;
+        var feeds = [];
+        feedIDs.forEach(function(feedID) {
+            feeds.push(refreshFeedEpisodes(feedID));
+        });
+        Promise.all(feeds)
             .then(function(result) {
-                res.status(result.status).send('Feed "' + feedID + '" refreshed successfully');
+                res.status(200).send('Feeds "' + feedIDs + '" refreshed successfully');
             })
             .catch(function(err) {
                 res.status(err.status).send(err.message);

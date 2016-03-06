@@ -11,6 +11,7 @@ const initialState = {
     episodes: [],
     activeFeed: SHOW_ALL,
     activeEpisode: '',
+    refreshingFeed: false,
     addFeed: {
         newFeedName: '',
         newFeedURL: '',
