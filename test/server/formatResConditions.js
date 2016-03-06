@@ -6,7 +6,7 @@
      * Helper for writing Express
      * controller unit tests
      */
-     var _ = require('lodash');
+    var _ = require('lodash');
 
     var formatResConditions = function(resultFuncs, done) {
         var modifiedResultFuncs = {};
