@@ -8,12 +8,12 @@
 
     /* Dependencies */
     var Episode  = require('../../models/Episode.js');
-    var getFeedFromID = require('./getFeedFromID').get;
+    var getFeedFromID = require('./getFeedFromID');
 
 
     /* Logic */
     exports.get = function(feedID) {
-        return getFeedFromID(feedID)
+        return getFeedFromID.get(feedID)
             .then(function(response) {
                 if (response instanceof Error) { throw response; }
                 return Episode.findAsync({feed: feedID});
@@ -22,7 +22,7 @@
                 return { body: episodes, status: 200 };
             })
             .catch(function(err) {
-                throw err;
+                return err;
             });
     };
 

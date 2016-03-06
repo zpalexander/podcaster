@@ -68,6 +68,8 @@
     "react-transform-hmr": "^1.0.0",
     "redbox-react": "^1.2.0",
     "redux-mock-store": "0.0.6",
+    "sinon": "^1.17.3",
+    "sinon-as-promised": "^4.0.0",
     "style-loader": "^0.12.3",
     "supertest": "^1.1.0",
     "webpack": "^1.9.11",
