@@ -21,10 +21,10 @@
     exports.getFeeds = function(req, res) {
         getFeeds()
             .then(function(response) {
-                res.send(response.message).status(response.status).end();
+                res.send(response.body).status(response.status).end();
             })
             .catch(function(err) {
-                res.send(err.message).status(err.status).end();
+                res.send(err.body).status(err.status).end();
             });
     };
 

@@ -12,10 +12,10 @@
     exports.get = function() {
         return Feed.findAsync({})
             .then(function(response) {
-                return { message: response, status: 200 };
+                return { body: response, status: 200 };
             })
             .catch(function(err) {
-                return { message: err, status: 500 };
+                return { body: err, status: 500 };
             });
     };
 
