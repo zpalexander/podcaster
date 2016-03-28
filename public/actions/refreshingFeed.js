@@ -1,3 +1,9 @@
+/**
+ * refreshingFeed.js
+ *
+ * Actions for refreshingFeeds reducer
+ */
+
 /* Dependencies */
 // Libraries
 import fetch from 'isomorphic-fetch';
