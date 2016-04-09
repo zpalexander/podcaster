@@ -8,10 +8,11 @@
     /* Dependencies */
     // Libraries
     var Promise = require('bluebird');
-    // Logic
+    var errors = require('../util/errors');
+    var validator = require('validator');
+    // Models
     var Feed     = require('../models/Feed.js');
-
-    /* Logic */
+    // Logic
     var getFeeds = require('./feeds/getFeeds').get;
     var getFeedEpisodes = require('./feeds/getFeedEpisodes').get;
     var refreshFeedEpisodes = require('./feeds/refreshFeedEpisodes').refresh;
@@ -60,6 +61,15 @@
             url: req.body.url,
             category: req.body.category
         };
+        // Valadate parameters
+        if (feedParams.name === '') {
+            res.status(errors.invalidFeedName.status).send(errors.invalidFeedName);
+            return;
+        }
+        if (!validator.isURL(feedParams.url)) {
+            res.status(errors.invalidFeedURL.status).send(errors.invalidFeedURL);
+            return;
+        }
         addFeed(feedParams)
             .then(function(result) {
                 res.status(result.status).send('Feed "' + feedParams.name + '" saved successfully');
