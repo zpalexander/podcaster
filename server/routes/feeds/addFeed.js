@@ -20,7 +20,7 @@
                 return result._id;
             })
             .then(function(feedID) {
-                refreshFeedEpisodes(feedID);
+                return refreshFeedEpisodes(feedID);
             })
             .then(function(result) {
                 return result;
