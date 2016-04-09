@@ -59,9 +59,11 @@ export function addNewFeed(name, url, category) {
         dispatch(requestAddNewFeed());
         return fetch(uri, fetchOptions)
             .then(result => {
+                if (result.status === 200) {
+                    dispatch(clearFeedInput());
+                }
                 dispatch(completeAddNewFeed(result));
                 dispatch(fetchFeeds());
-                dispatch(clearFeedInput());
             });
     }
 };
