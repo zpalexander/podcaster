@@ -11,7 +11,8 @@
     var errors = require('../util/errors');
     var validator = require('validator');
     // Models
-    var Feed     = require('../models/Feed.js');
+    var Feed = require('../models/Feed');
+    var Episode = require('../models/Episode');
     // Logic
     var getFeeds = require('./feeds/getFeeds').get;
     var getFeedEpisodes = require('./feeds/getFeedEpisodes').get;
@@ -80,7 +81,10 @@
     };
 
     exports.deleteFeed = function(req, res) {
-        Feed.removeAsync({id: req.body.id})
+        Feed.removeAsync({_id: req.body.id})
+            .then(function() {
+                return Episode.removeAsync({feed: req.body.id});
+            })
             .then(function() {
                 return res.status(200).end();
             })

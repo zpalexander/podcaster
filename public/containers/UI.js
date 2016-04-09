@@ -11,6 +11,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 // Actions
+import * as FeedActions from '../actions/feeds';
 import * as EpisodeActions from '../actions/episodes';
 import * as RefreshingFeedActions from '../actions/refreshFeed';
 // Components
@@ -45,9 +46,11 @@ class UI extends Component {
 
 
     render() {
-        const { episodes, feeds, activeFeed, activeEpisode, refreshingFeed, dispatch } = this.props;
+        const { episodes, feeds, activeFeed, activeEpisode, refreshFeed, dispatch } = this.props;
+        const feedActions = bindActionCreators(FeedActions, dispatch);
         const episodeActions = bindActionCreators(EpisodeActions, dispatch);
         const refreshingFeedActions = bindActionCreators(RefreshingFeedActions, dispatch);
+        const { deleteFeed } = feedActions;
         const { setActiveEpisode, unsetActiveEpisode, toggleUnplayed } = episodeActions;
         const { refreshFeeds } = refreshingFeedActions;
 
@@ -60,8 +63,9 @@ class UI extends Component {
                     activeFeed={activeFeed}
                     toggleUnplayed={toggleUnplayed}
                     refreshFeeds={refreshFeeds}
+                    deleteFeed={deleteFeed}
                     feeds={feeds}
-                    refreshingFeed={refreshingFeed}
+                    refreshingFeed={refreshFeed}
                 />
                 <MainSection
                     filteredEpisodes={filteredEpisodes}
@@ -81,7 +85,7 @@ UI.propTypes = {
     feeds: PropTypes.array.isRequired,
     activeFeed: PropTypes.string.isRequired,
     activeEpisode: PropTypes.string.isRequired,
-    refreshingFeed: PropTypes.bool.isRequired,
+    refreshFeed: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired
 };
 
@@ -92,7 +96,7 @@ function mapStateToProps(state) {
         feeds: state.feeds,
         activeFeed: state.activeFeed,
         activeEpisode: state.activeEpisode,
-        refreshingFeed: state.refreshingFeed
+        refreshFeed: state.refreshFeed
     }
 };
 
