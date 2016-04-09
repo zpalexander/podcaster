@@ -17,12 +17,15 @@ import Bookmark from 'react-icons/lib/md/bookmark';
 
 /* Component Definition */
 class Header extends Component {
+
     constructor(props) {
         super(props);
         this.handleMarkComplete = this.handleMarkComplete.bind(this);
         this.handleMarkNew = this.handleMarkNew.bind(this);
         this.handleRefresh = this.handleRefresh.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
+
 
     handleMarkComplete() {
         const { filteredEpisodes, toggleUnplayed } = this.props;
@@ -35,6 +38,7 @@ class Header extends Component {
         if (ids.length > 0) { toggleUnplayed(true, ids); }
     };
 
+
     handleMarkNew() {
         const { filteredEpisodes, toggleUnplayed } = this.props;
         let ids = [];
@@ -45,6 +49,7 @@ class Header extends Component {
         });
         if (ids.length > 0) { toggleUnplayed(false, ids); }
     };
+
 
     handleRefresh() {
         const { feeds, activeFeed, refreshFeeds } = this.props;
@@ -60,7 +65,16 @@ class Header extends Component {
         refreshFeeds(_ids);
     };
 
-    renderRefreshIcon(handleMarkComplete, handleMarkNew, handleRefresh, refreshingFeed) {
+
+    handleDelete() {
+        const { activeFeed, deleteFeed } = this.props;
+        if (activeFeed !== SHOW_ALL) {
+            deleteFeed(activeFeed);
+        }
+    };
+
+
+    renderRefreshIcon(handleMarkComplete, handleMarkNew, handleRefresh, handleDelete, refreshingFeed) {
         let completeIcon = React.createElement(Check, null);
         let markUnlistenedIcon = React.createElement(Bookmark, null);
         let refreshIcon = React.createElement(Refresh, null);
@@ -73,13 +87,10 @@ class Header extends Component {
             <div className='action-icons'>
                 <span onClick={handleMarkComplete.bind(this)}>{completeIcon}</span>
                 <span onClick={handleMarkNew.bind(this)}>{markUnlistenedIcon}</span>
-                <span
-                    className={refreshingClasses}
-                    onClick={handleRefresh.bind(this)}
-                >
+                <span className={refreshingClasses} onClick={handleRefresh.bind(this)}>
                     {refreshIcon}
                 </span>
-                {deleteIcon}
+                <span onClick={handleDelete.bind(this)}>{deleteIcon}</span>
             </div>
         );
     };
@@ -90,6 +101,7 @@ class Header extends Component {
             this.handleMarkComplete,
             this.handleMarkNew,
             this.handleRefresh,
+            this.handleDelete,
             refreshingFeed
         );
 
@@ -109,7 +121,8 @@ Header.propTypes = {
     toggleUnplayed: PropTypes.func.isRequired,
     refreshFeeds: PropTypes.func.isRequired,
     activeFeed: PropTypes.string.isRequired,
-    refreshingFeed: PropTypes.bool.isRequired
+    refreshingFeed: PropTypes.bool.isRequired,
+    deleteFeed: PropTypes.func.isRequired
 };
 
 
