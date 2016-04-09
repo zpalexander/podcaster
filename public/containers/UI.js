@@ -12,7 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 // Actions
 import * as EpisodeActions from '../actions/episodes';
-import * as RefreshingFeedActions from '../actions/refreshingFeed';
+import * as RefreshingFeedActions from '../actions/refreshFeed';
 // Components
 import Header from '../components/UI/Header';
 import MainSection from '../components/UI/MainSection';

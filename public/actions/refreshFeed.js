@@ -1,7 +1,7 @@
 /**
- * refreshingFeed.js
+ * refreshFeed.js
  *
- * Actions for refreshingFeeds reducer
+ * Actions for refreshFeed reducer
  */
 /* Dependencies */
 // Libraries
