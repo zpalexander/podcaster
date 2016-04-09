@@ -1,7 +1,7 @@
 /**
- * refreshingFeed.js
+ * refreshFeed.js
  *
- * Reducer for refreshingFeed property
+ * Reducer for refreshFeed property
  */
 
 /* Constants */
@@ -10,7 +10,7 @@ import initialState from '../constants/InitialState';
 
 
 /* Reducer */
-export default function feeds(state = initialState.refreshingFeed, action) {
+export default function feeds(state = initialState.refreshFeed, action) {
     switch (action.type) {
         case REQUEST_REFRESH:
             return true;

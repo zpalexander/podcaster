@@ -10,7 +10,7 @@ import episodes from './episodes';
 import activeFeed from './activeFeed';
 import activeEpisode from './activeEpisode';
 import addFeed from './addFeed';
-import refreshingFeed from './refreshingFeed';
+import refreshFeed from './refreshFeed';
 
 const rootReducer = combineReducers({
     feeds,
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
     activeFeed,
     activeEpisode,
     addFeed,
-    refreshingFeed,
+    refreshFeed,
     routing: routeReducer
 });
 
