@@ -13,12 +13,14 @@
     /* Logic */
     exports.add = function(feedParams) {
         var feed = new Feed(feedParams);
+        // Save feed, get its episodes and
+        // return outcome status
         return feed.saveAsync()
             .then(function(result) {
                 return result._id;
             })
             .then(function(feedID) {
-                refreshFeedEpisodes(feedID);
+                return refreshFeedEpisodes(feedID);
             })
             .then(function(result) {
                 return result;

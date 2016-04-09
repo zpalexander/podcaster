@@ -45,7 +45,7 @@ export default function episodes(state = initialState.addFeed, action) {
         case COMPLETE_ADD_NEW_FEED:
             return Object.assign({}, state, {
                 isAdding: false
-            })
+            });
             break;
 
         default:
