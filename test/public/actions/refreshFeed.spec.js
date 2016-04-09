@@ -1,7 +1,7 @@
 /**
- * refreshingFeed.spec.js
+ * refreshFeed.spec.js
  *
- * Unit tests for the refreshingFeed actions
+ * Unit tests for the refreshFeed actions
  */
 
 /* Dependencies */
@@ -11,7 +11,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 // Files to be tested
-import * as actions from '../../../public/actions/refreshingFeed';
+import * as actions from '../../../public/actions/refreshFeed';
 import * as types from '../../../public/constants/ActionTypes';
 
 /* Mocks */
