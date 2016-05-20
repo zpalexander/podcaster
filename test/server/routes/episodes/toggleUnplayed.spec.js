@@ -10,7 +10,7 @@ import Promise from 'bluebird';
 import sinon from 'sinon';
 require('sinon-as-promised')(Promise);
 // Files to be tested
-var toggleUnplayed = require('../../../../server/routes/episodes/toggleUnplayed').toggle;
+var toggleUnplayed = require('../../../../server/routes/episodes/toggleUnplayed');
 var errors = require('../../../../server/util/errors');
 var Episode = require('../../../../server/models/Episode');
 var EpisodeMock;

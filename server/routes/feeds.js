@@ -21,38 +21,24 @@ var addFeed = require('./feeds/addFeed').add;
 /* Route Handlers */
 exports.getFeeds = function(req, res) {
     getFeeds()
-        .then(function(response) {
-            res.send(response.body).status(response.status).end();
-        })
-        .catch(function(err) {
-            res.send(err.body).status(err.status).end();
-        });
+        .then(response => res.send(response.body).status(response.status).end())
+        .catch(err => res.send(err.body).status(err.status).end());
 };
 
 exports.refreshEpisodes = function(req, res) {
     var feedIDs = req.body._ids;
     var feeds = [];
-    feedIDs.forEach(function(feedID) {
-        feeds.push(refreshFeedEpisodes(feedID));
-    });
+    feedIDs.forEach(feedID => feeds.push(refreshFeedEpisodes(feedID)));
     Promise.all(feeds)
-        .then(function(result) {
-            res.status(200).send('Feeds "' + feedIDs + '" refreshed successfully');
-        })
-        .catch(function(err) {
-            res.status(err.status).send(err.message);
-        });
+        .then(() => res.status(200).send('Feeds "' + feedIDs + '" refreshed successfully'))
+        .catch(err => res.status(err.status).send(err.message));
 };
 
 exports.getEpisodes = function(req, res) {
     var feedID = req.params.feedID;
     getFeedEpisodes(feedID)
-        .then(function(response) {
-            res.status(response.status).send(response.body);
-        })
-        .catch(function(err) {
-            res.status(err.status).send(err.message);
-        });
+        .then(response => res.status(response.status).send(response.body))
+        .catch(err => res.status(err.status).send(err.message));
 };
 
 exports.addFeed = function(req, res) {
@@ -71,23 +57,15 @@ exports.addFeed = function(req, res) {
         return;
     }
     addFeed(feedParams)
-        .then(function(result) {
-            res.status(result.status).send('Feed "' + feedParams.name + '" saved successfully');
-        })
-        .catch(function(err) {
-            res.status(500).send(err);
-        });
+        .then(result => res.status(result.status).send('Feed "' + feedParams.name + '" saved successfully'))
+        .catch(err => res.status(500).send(err));
 };
 
 exports.deleteFeed = function(req, res) {
     Feed.removeAsync({_id: req.body.id})
-        .then(function() {
-            return Episode.removeAsync({feed: req.body.id});
-        })
-        .then(function() {
-            return res.status(200).end();
-        })
-        .catch(function(err) {
+        .then(() => Episode.removeAsync({feed: req.body.id}))
+        .then(() => res.status(200).end())
+        .catch(err => {
             console.log('err removing feed: ', req.query.name, ' with error: ', err);
             return res.status(500).json({'err': err});
         });

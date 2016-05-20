@@ -9,7 +9,9 @@
 var Episode  = require('../../models/Episode');
 
 /* Function */
-exports.getEpisodes = function() {
+module.exports = getEpisodes;
+
+function getEpisodes() {
     return Episode
         .find({})
         .sort({pubDate: -1})
