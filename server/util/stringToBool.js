@@ -5,7 +5,9 @@
  * Convert a string to a boolean
  */
 
-exports.default = function(_str) {
+module.exports = stringToBool;
+
+function stringToBool(_str) {
     if (typeof(_str) === 'boolean') { return _str; }
     switch (_str.toLowerCase().trim()) {
         case 'true': case 'yes': case '1': return true;

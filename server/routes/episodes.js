@@ -8,7 +8,7 @@
 /* Logic */
 var getEpisodes = require('./episodes/getEpisodes').getEpisodes;
 var toggleUnplayed = require('./episodes/toggleUnplayed').toggle;
-var stringToBool = require('../util/stringToBool').default;
+var stringToBool = require('../util/stringToBool');
 
 
 /* Route Handlers */
