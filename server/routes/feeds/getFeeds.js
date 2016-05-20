@@ -6,14 +6,18 @@
  */
 
 /* Dependencies */
-var Feed = require('../../models/Feed.js');
+const Feed = require('../../models/Feed.js');
 
-exports.get = function() {
+/* Module Exports */
+module.exports = getFeeds;
+
+/* Logic */
+function getFeeds() {
     return Feed.findAsync({})
-        .then(function(response) {
+        .then(response => {
             return { body: response, status: 200 };
         })
-        .catch(function(err) {
+        .catch(err => {
             return { body: err, status: 500 };
         });
 };

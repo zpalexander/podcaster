@@ -15,11 +15,19 @@ import Header from '../../../public/components/UI/Header';
 
 
 /* Helpers */
-const buildComponent = () => {
-
+const buildComponent = (filteredEpisodes = [], activeFeed = '', toggleUnplayed = ()=>{},
+    refreshFeeds = ()=>{}, deleteFeed = ()=>{}, feeds = [], refreshFeed = false) => {
     let renderer = createRenderer();
     renderer.render(
-        <Header />
+        <Header
+            filteredEpisodes={filteredEpisodes}
+            activeFeed={activeFeed}
+            toggleUnplayed={toggleUnplayed}
+            refreshFeeds={refreshFeeds}
+            deleteFeed={deleteFeed}
+            feeds={feeds}
+            refreshingFeed={refreshFeed}
+        />
     );
     return renderer.getRenderOutput();
 };

@@ -13,10 +13,10 @@ var validator = require('validator');
 var Feed = require('../models/Feed');
 var Episode = require('../models/Episode');
 // Logic
-var getFeeds = require('./feeds/getFeeds').get;
-var getFeedEpisodes = require('./feeds/getFeedEpisodes').get;
+var getFeeds = require('./feeds/getFeeds');
+var getFeedEpisodes = require('./feeds/getFeedEpisodes');
 var refreshFeedEpisodes = require('./feeds/refreshFeedEpisodes');
-var addFeed = require('./feeds/addFeed').add;
+var addFeed = require('./feeds/addFeed');
 
 /* Route Handlers */
 exports.getFeeds = function(req, res) {

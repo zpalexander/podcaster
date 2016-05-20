@@ -6,25 +6,20 @@
  */
 
 /* Dependencies */
-var Feed = require('../../models/Feed.js');
-var refreshFeedEpisodes = require('./refreshFeedEpisodes');
+const Feed = require('../../models/Feed.js');
+const refreshFeedEpisodes = require('./refreshFeedEpisodes');
+
+/* Module Exports */
+module.exports = addFeed;
 
 /* Logic */
-exports.add = function(feedParams) {
+function addFeed(feedParams) {
     var feed = new Feed(feedParams);
     // Save feed, get its episodes and
     // return outcome status
     return feed.saveAsync()
-        .then(function(result) {
-            return result._id;
-        })
-        .then(function(feedID) {
-            return refreshFeedEpisodes(feedID);
-        })
-        .then(function(result) {
-            return result;
-        })
-        .catch(function(err) {
-            return err;
-        });
+        .then(result => result._id)
+        .then(feedID => refreshFeedEpisodes(feedID))
+        .then(result => result)
+        .catch(err => err);
 };

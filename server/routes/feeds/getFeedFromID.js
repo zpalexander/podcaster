@@ -6,20 +6,23 @@
  */
 
 /* Dependencies */
-var Feed = require('../../models/Feed.js');
-var errors = require('../../util/errors');
+const Feed = require('../../models/Feed.js');
+const errors = require('../../util/errors');
+
+/* Module Exports */
+module.exports = getFeedFromID;
 
 /* Logic */
-exports.get = function(_id) {
+function getFeedFromID(_id) {
     return Feed.findAsync({'_id': _id})
-        .then(function(feed) {
+        .then(feed => {
+            let result;
             if (feed.length > 0) {
-                return { body: feed, status: 200};
+                result = { body: feed, status: 200 };
             } else {
                 throw errors.notFound;
             }
+            return result;
         })
-        .catch(function(err) {
-            return err;
-        });
+        .catch(err => err);
 };

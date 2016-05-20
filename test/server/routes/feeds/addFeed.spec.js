@@ -10,7 +10,7 @@ import Promise from 'bluebird';
 import sinon from 'sinon';
 require('sinon-as-promised')(Promise);
 // Files to be tested
-var addFeed = require('../../../../server/routes/feeds/addFeed').add;
+var addFeed = require('../../../../server/routes/feeds/addFeed');
 var refreshFeeds = require('../../../../server/routes/feeds/refreshFeedEpisodes');
 var Feed = require('../../../../server/models/Feed');
 var FeedMock;
