@@ -7,7 +7,7 @@
 
 /* Dependencies */
 var Feed = require('../../models/Feed.js');
-var refreshFeedEpisodes = require('./refreshFeedEpisodes').refresh;
+var refreshFeedEpisodes = require('./refreshFeedEpisodes');
 
 /* Logic */
 exports.add = function(feedParams) {

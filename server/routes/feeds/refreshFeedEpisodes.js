@@ -15,7 +15,9 @@ var getFeedFromID = require('./getFeedFromID').get;
 var getFeedEpisodes = require('./getFeedEpisodes').get;
 
 
-exports.refresh = function(feedID) {
+module.exports = refreshFeedEpisodes;
+
+function refreshFeedEpisodes(feedID) {
     return getFeedFromID(feedID)
         .then(function(response) {
             if (response instanceof Error) { throw response; }

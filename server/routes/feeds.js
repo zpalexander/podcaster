@@ -15,7 +15,7 @@ var Episode = require('../models/Episode');
 // Logic
 var getFeeds = require('./feeds/getFeeds').get;
 var getFeedEpisodes = require('./feeds/getFeedEpisodes').get;
-var refreshFeedEpisodes = require('./feeds/refreshFeedEpisodes').refresh;
+var refreshFeedEpisodes = require('./feeds/refreshFeedEpisodes');
 var addFeed = require('./feeds/addFeed').add;
 
 /* Route Handlers */
