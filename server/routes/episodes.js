@@ -2,7 +2,7 @@
 /**
  * episode.js
  *
- * Logic for episode operations
+ * Route handlers for episode operations
  */
 
 /* Logic */

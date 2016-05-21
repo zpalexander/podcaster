@@ -18,6 +18,7 @@
     "url": "https://github.com/zpalexander/podcaster/issues"
   },
   "dependencies": {
+    "bcrypt": "^0.8.6",
     "bluebird": "^3.3.3",
     "body-parser": "^1.14.1",
     "bunyan": "^1.8.1",
@@ -31,6 +32,7 @@
     "helmet": "^2.1.0",
     "history": "^1.17.0",
     "isomorphic-fetch": "^2.2.0",
+    "jsonwebtoken": "^7.0.0",
     "lodash": "^4.5.0",
     "moment": "^2.11.2",
     "mongoose": "^4.4.2",

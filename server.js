@@ -7,7 +7,6 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const wpConfig             = require('./webpack.config');
 const appConfig            = require('./server/util/config').config;
-
 // App dependencies
 const express              = require('express');
 const bodyParser           = require('body-parser');
@@ -21,6 +20,7 @@ const log                  = require('./server/middleware/logger');
 // Route handlers
 const feeds                = require('./server/routes/feeds');
 const episodes             = require('./server/routes/episodes');
+const user                 = require('./server/routes/user');
 
 
 /* Initialize App Configuration */
@@ -60,16 +60,16 @@ app.post('/api/feed/delete', feeds.deleteFeed);
 // Episode
 app.get('/api/episodes/', episodes.get);
 app.post('/api/episode/toggleUnplayed', episodes.toggleUnplayed);
+// User
+app.post('/api/login', user.login);
+app.post('/api/user', user.create);
 
 
 /* Start Server Listening */
-var server = app.listen(appConfig.port, function(error) {
-  if (error) {
-    console.error(error)
-  } else {
+const server = app.listen(appConfig.port, function(error) {
+    if (error) { throw error; }
     mongoose.connect(appConfig.dbURL, appConfig.dbOptions);
-    console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", appConfig.port, appConfig.port)
-  }
+    log.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", appConfig.port, appConfig.port)
 });
 
 module.exports = server;

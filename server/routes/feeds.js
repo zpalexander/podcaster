@@ -2,21 +2,22 @@
 /**
  * feed.js
  *
- * Logic for feed operations
+ * Route handlers for feed operations
  */
 /* Dependencies */
 // Libraries
-var Promise = require('bluebird');
-var errors = require('../util/errors');
-var validator = require('validator');
+const Promise = require('bluebird');
+const errors = require('../util/errors');
+const validator = require('validator');
+const log = require('../middleware/logger');
 // Models
-var Feed = require('../models/Feed');
-var Episode = require('../models/Episode');
+const Feed = require('../models/Feed');
+const Episode = require('../models/Episode');
 // Logic
-var getFeeds = require('./feeds/getFeeds');
-var getFeedEpisodes = require('./feeds/getFeedEpisodes');
-var refreshFeedEpisodes = require('./feeds/refreshFeedEpisodes');
-var addFeed = require('./feeds/addFeed');
+const getFeeds = require('./feeds/getFeeds');
+const getFeedEpisodes = require('./feeds/getFeedEpisodes');
+const refreshFeedEpisodes = require('./feeds/refreshFeedEpisodes');
+const addFeed = require('./feeds/addFeed');
 
 /* Route Handlers */
 exports.getFeeds = function(req, res) {
@@ -66,7 +67,7 @@ exports.deleteFeed = function(req, res) {
         .then(() => Episode.removeAsync({feed: req.body.id}))
         .then(() => res.status(200).end())
         .catch(err => {
-            console.log('err removing feed: ', req.query.name, ' with error: ', err);
+            log.error('err removing feed: ', req.query.name, ' with error: ', err);
             return res.status(500).json({'err': err});
         });
 };
