@@ -1,6 +1,15 @@
+env:
+  - CXX=g++-4.8
 language: node_js
 node_js:
-- '5.7.0'
+- '6.1.0'
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
 notifications:
   email: false
 after_success: npm run coverage

@@ -19,7 +19,7 @@ const filterHandler = () => {};
 
 
 /* Helpers */
-const buildComponent = (id = '', name = '', activeFilter = '') => {
+const buildComponent = (id = '', name = '', activeFilter = '', pathname = '') => {
     let feed = {
         _id: id,
         name: name
@@ -31,6 +31,7 @@ const buildComponent = (id = '', name = '', activeFilter = '') => {
             feed={feed}
             filterHandler={filterHandler}
             activeFilter={activeFilter}
+            pathname={pathname}
         />
     );
     return renderer.getRenderOutput();

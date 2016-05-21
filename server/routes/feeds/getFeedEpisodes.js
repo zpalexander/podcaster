@@ -1,29 +1,26 @@
-(function() {
-    'use strict';
-    /**
-     * getFeedEpisodes.js
-     *
-     * Get all episodes of a certain feed
-     */
+'use strict';
+/**
+ * getFeedEpisodes.js
+ *
+ * Get all episodes of a certain feed
+ */
 
-    /* Dependencies */
-    var Episode  = require('../../models/Episode.js');
-    var getFeedFromID = require('./getFeedFromID');
+/* Dependencies */
+const Episode = require('../../models/Episode.js');
+const getFeedFromID = require('./getFeedFromID');
 
+/* Module Exports */
+module.exports = getFeedEpisodes;
 
-    /* Logic */
-    exports.get = function(feedID) {
-        return getFeedFromID.get(feedID)
-            .then(function(response) {
-                if (response instanceof Error) { throw response; }
-                return Episode.findAsync({feed: feedID});
-            })
-            .then(function(episodes) {
-                return { body: episodes, status: 200 };
-            })
-            .catch(function(err) {
-                return err;
-            });
-    };
-
-}());
+/* Logic */
+function getFeedEpisodes(feedID) {
+    return getFeedFromID(feedID)
+        .then(response => {
+            if (response instanceof Error) { throw response; }
+            return Episode.findAsync({feed: feedID});
+        })
+        .then(episodes => {
+            return { body: episodes, status: 200 };
+        })
+        .catch(err => err);
+};

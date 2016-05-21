@@ -10,8 +10,8 @@ import Promise from 'bluebird';
 import sinon from 'sinon';
 require('sinon-as-promised')(Promise);
 // Files to be tested
-var getFeeds = require('../../../../server/routes/feeds/getFeeds').get;
-var Feed = require('../../../../server/models/Feed');
+const getFeeds = require('../../../../server/routes/feeds/getFeeds');
+const Feed = require('../../../../server/models/Feed');
 var FeedMock;
 
 
@@ -21,7 +21,7 @@ beforeEach(() => {
 });
 
 /* Post-test teardown */
-afterEach(function() {
+afterEach(() => {
     FeedMock.restore();
 });
 
@@ -42,11 +42,7 @@ describe('Backend - Feeds: getFeeds', () => {
         let expectedResult = { body: sampleFeeds , status: 200 };
 
         // Run the test
-        getFeeds()
-            .then((result) => {
-                expect(result).toEqual(expectedResult);
-            });
-
+        getFeeds().then(result => expect(result).toEqual(expectedResult));
     });
 
 });

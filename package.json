@@ -4,7 +4,7 @@
   "description": "Podcast Catcher",
   "scripts": {
     "test": "nyc --require babel-core/register mocha --recursive",
-    "dev": "BABEL_ENV=local nodemon server.js",
+    "dev": "BABEL_ENV=local nodemon server.js | ./node_modules/.bin/bunyan -o short",
     "compile": "webpack --config ./webpack.production.config.js --progress --colors",
     "start": "node server.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
@@ -18,16 +18,21 @@
     "url": "https://github.com/zpalexander/podcaster/issues"
   },
   "dependencies": {
+    "bcrypt": "^0.8.6",
     "bluebird": "^3.3.3",
     "body-parser": "^1.14.1",
+    "bunyan": "^1.8.1",
     "classnames": "^2.1.2",
     "cors": "^2.7.1",
     "css-loader": "^0.23.0",
+    "dont-sniff-mimetype": "^1.0.0",
     "feedparser": "^1.1.4",
     "file-loader": "^0.8.5",
     "fs": "0.0.2",
+    "helmet": "^2.1.0",
     "history": "^1.17.0",
     "isomorphic-fetch": "^2.2.0",
+    "jsonwebtoken": "^7.0.0",
     "lodash": "^4.5.0",
     "moment": "^2.11.2",
     "mongoose": "^4.4.2",
