@@ -2,36 +2,51 @@
 
 /* Initialize App Dependencies */
 // Webpack dependencies
-var webpack              = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
-var wpConfig             = require('./webpack.config');
-var appConfig            = require('./server/util/config').config;
+const webpack              = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const wpConfig             = require('./webpack.config');
+const appConfig            = require('./server/util/config').config;
 
 // App dependencies
-var express              = require('express');
-var bodyParser           = require('body-parser');
-var path                 = require('path');
-var cors                 = require('cors');
-var mongoose             = require('mongoose');
+const express              = require('express');
+const bodyParser           = require('body-parser');
+const path                 = require('path');
+const cors                 = require('cors');
+const mongoose             = require('mongoose');
+const helmet               = require('helmet');
+const nosniff              = require('dont-sniff-mimetype');
+const errorHandler         = require('./server/middleware/errorHandler');
+const log                  = require('./server/middleware/logger');
 // Route handlers
-var feeds                = require('./server/routes/feeds');
-var episodes             = require('./server/routes/episodes');
+const feeds                = require('./server/routes/feeds');
+const episodes             = require('./server/routes/episodes');
 
 
 /* Initialize App Configuration */
-var app = new express();
+const app = new express();
 // Webpack Dev Tools
 if (appConfig.env === 'local') {
-    var compiler = webpack(wpConfig);
+    const compiler = webpack(wpConfig);
     app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: wpConfig.output.publicPath }));
     app.use(webpackHotMiddleware(compiler));
 }
-// Express middleware
+
+
+/* Express Middleware */
+// Security
+app.disable('x-powered-by');
+app.use(helmet());
+app.use(nosniff());
+// Configuration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(errorHandler);
+app.use(log.requestLogger);
+app.use(log.errorLogger);
 app.use('/', express.static(path.join(__dirname, 'public')));
+
 
 
 
