@@ -13,6 +13,7 @@ const log = require('../../middleware/logger');
 const { signJwt } = require('./passwordCrypto')
 // Models
 const User = require('../../models/User');
+const Profile = require('../../models/Profile');
 // Constants
 const secret = require('../../../secret.json');
 const errors = require('../../util/errors');
@@ -42,8 +43,7 @@ function verifyPassword(secret, user, password) {
     return bcrypt.compareAsync(password, user.passwordHash)
         .then(isVerified => {
             if (!isVerified) { throw errors.accessDenied; }
-            const profile = { username: user.username, feeds: user.feeds};
-            const token = signJwt(profile, secret);
+            const token = signJwt(Profile(user.username, user.feeds));
             return {token: token, user: user};
         });
 }

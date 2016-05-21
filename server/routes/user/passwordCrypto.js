@@ -9,10 +9,13 @@
 const Promise = require('bluebird');
 const jwt = require('jsonwebtoken');
 const crypto = Promise.promisifyAll(require('crypto'));
+const bcrypt = Promise.promisifyAll(require('bcrypt'));
+const secret = require('../../../secret.json');
 
 /* Module Exports */
 exports.generateResetPasswordTokenAsync = generateResetPasswordTokenAsync;
 exports.signJwt = signJwt;
+exports.hashAndSetPassword = hashAndSetPassword;
 
 /* Logic */
 function generateResetPasswordTokenAsync() {
@@ -24,6 +27,19 @@ function generateResetPasswordTokenAsync() {
         });
 }
 
-function signJwt(profile, secret) {
+function signJwt(profile) {
     return jwt.sign(profile, secret, {expiresIn: '1d'}); //expires in 1 day
 }
+
+
+function hashAndSetPassword(user, password) {
+    return bcrypt.genSaltAsync(10)
+        .then(function(salt) {
+            return salt;
+        }).then(function(salt) {
+            return bcrypt.hashAsync(password, salt);
+        }).then(function(passwordHash) {
+            user.passwordHash = passwordHash;
+            return user;
+        });
+};

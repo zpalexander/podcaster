@@ -35,6 +35,12 @@ accessDenied.name = 'ACCESS_DENIED';
 accessDenied.message = 'You are not authorized to access this resource.';
 accessDenied.status = 401;
 
+// Expired token
+const expiredToken = new Error();
+expiredToken.name = 'EXPIRED_TOKEN';
+expiredToken.message = 'Your password reset token has expired. Please request a new reset link.';
+expiredToken.status = 422;
+
 // Internal server error
 const internalError = new Error();
 internalError.name = 'INTERNAL_SERVER_ERROR';
@@ -47,4 +53,5 @@ exports.invalidFeedName = invalidFeedName;
 exports.invalidFeedURL = invalidFeedURL;
 exports.invalidEmailAddress = invalidEmailAddress;
 exports.accessDenied = accessDenied;
+exports.expiredToken = expiredToken;
 exports.internalError = internalError;

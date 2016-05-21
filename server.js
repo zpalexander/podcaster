@@ -63,6 +63,7 @@ app.post('/api/episode/toggleUnplayed', episodes.toggleUnplayed);
 // User
 app.post('/api/login', user.login);
 app.post('/api/user', user.create);
+app.put('/api/user', user.setPassword);
 
 
 /* Start Server Listening */
