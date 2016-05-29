@@ -25,10 +25,7 @@ module.exports = login;
 /* Logic */
 function login(username, password) {
     return User.findByUsernameAsync(username)
-        .then(user => {
-            if (user === null) { throw errors.notFound; }
-            return verifyPassword(secret, user, password);
-        })
+        .then(user => verifyPassword(secret, user, password))
         .then(verificationRes => {
             if (verificationRes instanceof Error) { throw verificationRes; }
             return { token: verificationRes.user, user: verificationRes.token };

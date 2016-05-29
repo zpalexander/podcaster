@@ -8,6 +8,7 @@
 /* Dependencies */
 const mongoose = require('mongoose');
 const Promise  = require('bluebird');
+const errors = require('../util/errors');
 
 /* Schema */
 const userSchema = new mongoose.Schema({
@@ -25,7 +26,11 @@ userSchema.statics.findAllAsync = () => {
 };
 
 userSchema.statics.findByUsernameAsync = (username) => {
-    return User.findOneAsync({username: username});
+    return User.findOneAsync({username: username})
+        .then(user => {
+            if (user === null) { throw errors.notFound; }
+            return user;
+        });
 };
 
 /* Export */

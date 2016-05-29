@@ -6,7 +6,7 @@ const webpack              = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const wpConfig             = require('./webpack.config');
-const appConfig            = require('./server/util/config').config;
+const appConfig            = require('./server/util/config');
 // App dependencies
 const express              = require('express');
 const bodyParser           = require('body-parser');
@@ -48,8 +48,6 @@ app.use(log.errorLogger);
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 
-
-
 /* Declare Endpoints */
 // Feed
 app.get('/api/feeds/', feeds.getFeeds);
@@ -64,6 +62,7 @@ app.post('/api/episode/toggleUnplayed', episodes.toggleUnplayed);
 app.post('/api/login', user.login);
 app.post('/api/user', user.create);
 app.put('/api/user', user.setPassword);
+app.post('/api/user/password', user.requestResetToken);
 
 
 /* Start Server Listening */

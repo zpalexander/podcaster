@@ -5,11 +5,11 @@
  * Node errors for returning non-200 status codes
  */
 
-// Does not exist
-const notFound = new Error();
-notFound.name = 'RESOURCE_NOT_FOUND';
-notFound.message = 'The resource being queried does not exist.';
-notFound.status = 404;
+// Bad user input
+const badUserInput = new Error();
+badUserInput.name = 'BAD_USER_INPUT';
+badUserInput.message = 'Request body contained incorrect parameters';
+badUserInput.status = 400;
 
 // Invalid feed name
 const invalidFeedName = new Error();
@@ -35,6 +35,12 @@ accessDenied.name = 'ACCESS_DENIED';
 accessDenied.message = 'You are not authorized to access this resource.';
 accessDenied.status = 401;
 
+// Does not exist
+const notFound = new Error();
+notFound.name = 'RESOURCE_NOT_FOUND';
+notFound.message = 'The resource being queried does not exist.';
+notFound.status = 404;
+
 // Expired token
 const expiredToken = new Error();
 expiredToken.name = 'EXPIRED_TOKEN';
@@ -48,10 +54,10 @@ internalError.message = 'Something went wrong.';
 internalError.status = 500;
 
 /* Exports */
-exports.notFound = notFound;
 exports.invalidFeedName = invalidFeedName;
 exports.invalidFeedURL = invalidFeedURL;
 exports.invalidEmailAddress = invalidEmailAddress;
 exports.accessDenied = accessDenied;
+exports.notFound = notFound;
 exports.expiredToken = expiredToken;
 exports.internalError = internalError;

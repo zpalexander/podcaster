@@ -31,9 +31,6 @@ function setPassword(username, resetToken, newPassword) {
 
 
 function checkUserAndSetPass(user, resetToken, newPassword) {
-    if (user === null) {
-        throw errors.notFound;
-    }
     if (user.resetPasswordToken === '') {
         throw errors.expiredToken;
     }
