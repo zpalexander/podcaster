@@ -45,8 +45,6 @@ app.use(cors());
 app.use(errorHandler);
 app.use(log.requestLogger);
 app.use(log.errorLogger);
-app.use('/', express.static(path.join(__dirname, 'public')));
-
 
 /* Declare Endpoints */
 // Feed
@@ -59,14 +57,18 @@ app.post('/api/feed/delete', feeds.deleteFeed);
 app.get('/api/episodes/', episodes.get);
 app.post('/api/episode/toggleUnplayed', episodes.toggleUnplayed);
 // User
-app.post('/api/login', user.login);
+app.post('/api/user/login', user.login);
 app.post('/api/user', user.create);
 app.put('/api/user', user.setPassword);
 app.post('/api/user/password', user.requestResetToken);
 
+// Serve the view
+app.use('/*', express.static(path.join(__dirname, 'public')));
+
+
 
 /* Start Server Listening */
-const server = app.listen(appConfig.port, function(error) {
+const server = app.listen(appConfig.port, error => {
     if (error) { throw error; }
     mongoose.connect(appConfig.dbURL, appConfig.dbOptions);
     log.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", appConfig.port, appConfig.port)

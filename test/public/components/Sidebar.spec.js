@@ -13,7 +13,7 @@ expect.extend(expectJSX);
 // Constants
 import { SHOW_ALL } from '../../../public/constants/Filters';
 // Component
-import Sidebar from '../../../public/containers/Sidebar';
+import Sidebar from '../../../public/components/UI/Sidebar';
 
 
 /* Mocks */

@@ -11,7 +11,7 @@ import React, { PropTypes, Component } from 'react';
 import Episode from './Episode';
 
 /* Component Definition */
-class MainSection extends Component {
+class Episodes extends Component {
     constructor(props, context) {
         super(props, context)
     };
@@ -44,7 +44,7 @@ class MainSection extends Component {
         let content = this.renderContent(filteredEpisodes, activeEpisode, setActiveEpisode, unsetActiveEpisode, toggleUnplayed);
 
         return (
-            <section className="content">
+            <section className="feeds">
                 { content }
             </section>
         )
@@ -53,7 +53,7 @@ class MainSection extends Component {
 
 
 /* Component Prop Types */
-MainSection.propTypes = {
+Episodes.propTypes = {
     filteredEpisodes: PropTypes.array.isRequired,
     activeEpisode: PropTypes.string.isRequired,
     setActiveEpisode: PropTypes.func.isRequired,
@@ -62,4 +62,4 @@ MainSection.propTypes = {
 }
 
 /* Default Export */
-export default MainSection;
+export default Episodes;

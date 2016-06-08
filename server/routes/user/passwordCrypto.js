@@ -22,10 +22,11 @@ function generateResetPasswordTokenAsync() {
     var today = new Date();
     var expirationDate = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
     return crypto.randomBytesAsync(20)
-        .then(function(buf) {
+        .then(buf => {
             return {tokenBody: buf.toString('hex'), expiresAt: expirationDate};
         });
 }
+
 
 function signJwt(profile) {
     return jwt.sign(profile, secret, {expiresIn: '1d'}); //expires in 1 day
@@ -34,11 +35,8 @@ function signJwt(profile) {
 
 function hashAndSetPassword(user, password) {
     return bcrypt.genSaltAsync(10)
-        .then(function(salt) {
-            return salt;
-        }).then(function(salt) {
-            return bcrypt.hashAsync(password, salt);
-        }).then(function(passwordHash) {
+        .then(salt => bcrypt.hashAsync(password, salt))
+        .then(passwordHash => {
             user.passwordHash = passwordHash;
             return user;
         });

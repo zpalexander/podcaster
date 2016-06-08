@@ -3,6 +3,9 @@
  *
  * Definition of all field names
  */
+// Login
+export const USERNAME = 'USERNAME';
+export const PASSWORD = 'PASSWORD';
 
 // Add Feed
 export const NEW_FEED_NAME = 'NEW_FEED_NAME';

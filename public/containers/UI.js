@@ -15,8 +15,9 @@ import * as FeedActions from '../actions/feeds';
 import * as EpisodeActions from '../actions/episodes';
 import * as RefreshingFeedActions from '../actions/refreshFeed';
 // Components
+import Sidebar from '../components/UI/Sidebar';
 import Header from '../components/UI/Header';
-import MainSection from '../components/UI/MainSection';
+import Episodes from '../components/UI/Episodes';
 // Constantsa
 import { SHOW_ALL } from '../constants/Filters';
 
@@ -27,6 +28,7 @@ class UI extends Component {
 
     componentDidMount() {
         const { dispatch } = this.props;
+        dispatch(FeedActions.fetchFeeds());
         dispatch(EpisodeActions.fetchEpisodes());
     };
 
@@ -50,7 +52,7 @@ class UI extends Component {
         const feedActions = bindActionCreators(FeedActions, dispatch);
         const episodeActions = bindActionCreators(EpisodeActions, dispatch);
         const refreshingFeedActions = bindActionCreators(RefreshingFeedActions, dispatch);
-        const { deleteFeed } = feedActions;
+        const { deleteFeed, setActiveFeed } = feedActions;
         const { setActiveEpisode, unsetActiveEpisode, toggleUnplayed } = episodeActions;
         const { refreshFeeds } = refreshingFeedActions;
 
@@ -58,23 +60,31 @@ class UI extends Component {
 
         return (
             <div className='ui'>
-                <Header
-                    filteredEpisodes={filteredEpisodes}
-                    activeFeed={activeFeed}
-                    toggleUnplayed={toggleUnplayed}
-                    refreshFeeds={refreshFeeds}
-                    deleteFeed={deleteFeed}
+                <Sidebar
+                    location={location}
                     feeds={feeds}
-                    refreshingFeed={refreshFeed}
-                />
-                <MainSection
-                    filteredEpisodes={filteredEpisodes}
                     activeFeed={activeFeed}
-                    activeEpisode={activeEpisode}
-                    setActiveEpisode={setActiveEpisode}
-                    unsetActiveEpisode={unsetActiveEpisode}
-                    toggleUnplayed={toggleUnplayed}
+                    setActiveFeed={setActiveFeed}
                 />
+                <div className='ui-content'>
+                    <Header
+                        filteredEpisodes={filteredEpisodes}
+                        activeFeed={activeFeed}
+                        toggleUnplayed={toggleUnplayed}
+                        refreshFeeds={refreshFeeds}
+                        deleteFeed={deleteFeed}
+                        feeds={feeds}
+                        refreshingFeed={refreshFeed}
+                    />
+                    <Episodes
+                        filteredEpisodes={filteredEpisodes}
+                        activeFeed={activeFeed}
+                        activeEpisode={activeEpisode}
+                        setActiveEpisode={setActiveEpisode}
+                        unsetActiveEpisode={unsetActiveEpisode}
+                        toggleUnplayed={toggleUnplayed}
+                    />
+                </div>
             </div>
         );
     };

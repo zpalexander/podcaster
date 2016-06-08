@@ -17,12 +17,12 @@ module.exports = requestReset;
 function requestReset(username, appUrl, isNew) {
     return generateResetPasswordTokenAsync()
         .then(token => saveUserToken(username, token))
-        .then(user => sendPasswordEmail(user.username, appUrl, user.resetPasswordToken, isNew))
+        .then(user => sendPasswordEmail(user.username, appUrl, user.resetPasswordToken, isNew));
 }
 
 
 function saveUserToken(username, resetToken) {
-    var updateOptions = {
+    const updateOptions = {
         conditions: {username: username},
         update: {
             resetPasswordToken: resetToken.token,

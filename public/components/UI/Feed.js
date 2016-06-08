@@ -27,7 +27,7 @@ class Feed extends Component {
 
         return (
             <div className={classes} onClick={filterHandler.bind(this, feed._id)} >
-                <Link to='/'>{feed.name}</Link>
+                <Link to='/feeds'>{feed.name}</Link>
             </div>
         );
     };

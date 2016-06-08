@@ -13,14 +13,16 @@ const setPassword = require('./user/setPassword')
 const requestReset = require('./user/requestReset');
 const stringToBool = require('../util/stringToBool');
 
+
 /* Module Exports */
-exports.create = createUser;
-exports.login = loginUser;
-exports.setPassword = setUserPassword;
-exports.requestResetToken = requestResetToken;
+exports.create = createUserHandler;
+exports.login = loginUserHandler;
+exports.setPassword = setUserPasswordHandler;
+exports.requestResetToken = requestResetTokenHandler;
+
 
 /* Route Handlers */
-function createUser(req, res) {
+function createUserHandler(req, res) {
     const username = req.body.username;
     if (!validator.isEmail(username)) {
         res.status(errors.invalidEmailAddress.status).send(errors.invalidEmailAddress);
@@ -31,7 +33,7 @@ function createUser(req, res) {
 }
 
 
-function loginUser(req, res) {
+function loginUserHandler(req, res) {
     const username = req.body.username;
     const password = req.body.password;
     login(username, password)
@@ -40,7 +42,7 @@ function loginUser(req, res) {
 }
 
 
-function setUserPassword(req, res) {
+function setUserPasswordHandler(req, res) {
     const username = req.body.username;
     const resetToken = req.body.token;
     const newPassword = req.body.newPassword;
@@ -50,7 +52,7 @@ function setUserPassword(req, res) {
 }
 
 
-function requestResetToken(req, res) {
+function requestResetTokenHandler(req, res) {
     const username = req.body.username;
     const appUrl = req.body.appUrl;
     const isNew = req.body.isNew;

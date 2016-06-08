@@ -9,9 +9,9 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 // Constants
-import { SHOW_ALL } from '../constants/Filters';
+import { SHOW_ALL } from '../../constants/Filters';
 // Components
-import Feed from '../components/UI/Feed';
+import Feed from '../../components/UI/Feed';
 
 
 /* Component Definition */

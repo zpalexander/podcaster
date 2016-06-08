@@ -7,12 +7,8 @@
 // Libraries
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { pushPath } from 'redux-simple-router';
 import '!style!css!sass!../styles/styles.scss';
-// Actions
-import * as FeedActions from '../actions/feeds';
-// Containers
-import Sidebar from './Sidebar';
 
 
 class App extends Component {
@@ -20,47 +16,34 @@ class App extends Component {
         super(props);
     };
 
-    componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch(FeedActions.fetchFeeds());
+    componentWillMount() {
+        let nonProtectedRoutes = ['/'];
+        const { isLoggedIn, authToken, dispatch } = this.props;
+        if ((!isLoggedIn || authToken === '') && (nonProtectedRoutes.indexOf(location.pathname) < 0)) {
+            dispatch(pushPath('/'));
+        }
     };
-
 
     render() {
-        var self = this;
-        const { children, location, feeds, activeFeed, dispatch } = self.props;
-        const feedActions = bindActionCreators(FeedActions, dispatch);
-        const { setActiveFeed } = feedActions;
-
-        return (
-            <div>
-                <Sidebar
-                    location={location}
-                    feeds={feeds}
-                    activeFeed={activeFeed}
-                    setActiveFeed={setActiveFeed}
-                />
-                {children}
-            </div>
-        )
+        const { children } = this.props;
+        return (<div>{children}</div>);
     };
 };
 
-App.propTypes = {
-    children: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    feeds: PropTypes.array.isRequired,
-    activeFeed: PropTypes.string.isRequired,
-    dispatch: PropTypes.func.isRequired
-};
 
 function mapStateToProps(state) {
     return {
-        feeds: state.feeds,
-        activeFeed: state.activeFeed
-    };
-};
+        isLoggedIn: state.login.isLoggedIn,
+        authToken: state.login.authToken
+    }
+}
 
+App.propTypes = {
+    children: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    authToken: PropTypes.string.isRequired
+};
 
 export default connect(
     mapStateToProps
