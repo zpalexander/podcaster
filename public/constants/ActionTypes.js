@@ -27,3 +27,10 @@ export const HANDLE_ADD_FEED_INPUT = 'HANDLE_ADD_FEED_INPUT';
 export const CLEAR_FEED_INPUT = 'CLEAR_FEED_INPUT';
 export const REQUEST_ADD_NEW_FEED = 'REQUEST_ADD_NEW_FEED';
 export const COMPLETE_ADD_NEW_FEED = 'COMPLETE_ADD_NEW_FEED';
+
+// Auth Actions
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOG_OUT = 'LOG_OUT';
+export const IS_LOGGING_IN = 'IS_LOGGING_IN';
+export const HANDLE_LOGIN_INPUT = 'HANDLE_LOGIN_INPUT';

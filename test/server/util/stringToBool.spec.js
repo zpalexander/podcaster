@@ -1,3 +1,4 @@
+'use strict';
 /**
  * stringToBool.spec.js
  *

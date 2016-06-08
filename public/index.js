@@ -1,3 +1,4 @@
+
 /**
  * index.js
  *
@@ -15,6 +16,7 @@ import { createHistory } from 'history';
 import { syncReduxAndRouter } from 'redux-simple-router';
 /* Containers */
 import App from './containers/App';
+import Login from './containers/Login';
 import UI from './containers/UI';
 import AddFeed from './containers/AddFeed';
 /* Store */
@@ -29,7 +31,8 @@ render(
     <Provider store={store}>
         <Router history={history}>
             <Route path='/' component={App}>
-                <IndexRoute component={UI} />
+                <IndexRoute component={Login} />
+                <Route path='feeds' component={UI} />
                 <Route path='add' component={AddFeed} />
             </Route>
         </Router>

@@ -23,5 +23,5 @@ function create(username) {
                 resetPasswordExpires: token.expiresAt
             });
             return user.saveAsync();
-        })
+        });
 }

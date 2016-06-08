@@ -11,6 +11,7 @@ import activeFeed from './activeFeed';
 import activeEpisode from './activeEpisode';
 import addFeed from './addFeed';
 import refreshFeed from './refreshFeed';
+import login from './login';
 
 const rootReducer = combineReducers({
     feeds,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     activeEpisode,
     addFeed,
     refreshFeed,
+    login,
     routing: routeReducer
 });
 

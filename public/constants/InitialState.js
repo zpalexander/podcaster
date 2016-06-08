@@ -17,6 +17,19 @@ const initialState = {
         newFeedURL: '',
         newFeedCategory: '',
         isAdding: false
+    },
+    // Auth
+    login: {
+        isLoggedIn: false,
+        isLoggingIn: false,
+        authToken: '',
+        invalidCreds: false,
+        username: '',
+        password: '',
+        resetUsername: '',
+        newPassword: '',
+        repeatPassword: '',
+        passwordsMatch: null
     }
 };
 
