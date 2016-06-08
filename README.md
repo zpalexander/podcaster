@@ -6,4 +6,4 @@
 
 A Podcast Catcher built with React + Redux + Node.
 
-Stable on Node v5.7.0
+Stable on Node v6.1.0
