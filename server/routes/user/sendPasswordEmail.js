@@ -18,7 +18,8 @@ function sendPasswordEmail(username, appUrl, resetToken, isNewUser) {
     var message = resetPasswordMessage(username, resetLink, isNewUser);
     var transporter = emailTransporter.getTransporter();
     var mailOptions = emailTransporter.buildMailOptions(username, message.subject, message.body);
-    return transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions);
+    return resetLink;
 };
 
 

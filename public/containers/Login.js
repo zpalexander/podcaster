@@ -66,7 +66,7 @@ class Login extends Component {
 
 
         return (
-            <div className='login-form'>
+            <div className='login'>
                 <h1>Login</h1>
                 <input
                     type="text"
@@ -112,7 +112,7 @@ Login.propTypes = {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     invalidCreds: PropTypes.bool.isRequired,
-    isLoggingIn: PropTypes.func.isRequired,
+    isLoggingIn: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired
 };
 

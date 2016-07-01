@@ -20,26 +20,19 @@ module.exports = setPassword;
 
 /* Logic */
 function setPassword(username, resetToken, newPassword) {
-     if (!validator.isEmail(username)) { return errors.invalidEmailAddress; }
-
+    if (!validator.isEmail(username)) { return errors.invalidEmailAddress; }
     return User.findByUsernameAsync(username.toLowerCase())
         .then(user => checkUserAndSetPass(user, resetToken, newPassword))
         .then(clearResetToken)
-        .then(user => signJwt(Profile(user.username, user.feeds)))
-        .catch(err => err);
+        .then(user => signJwt(Profile(user.username, user.feeds)));
 }
 
 
 function checkUserAndSetPass(user, resetToken, newPassword) {
-    if (user.resetPasswordToken === '') {
-        throw errors.expiredToken;
-    }
-    if (user.resetPasswordToken !== resetToken) {
-        throw errors.accessDenied;
-    }
-    if (user.resetPasswordExpires < new Date()) {
-        throw errors.expiredToken;
-    }
+    if (!user) { throw errors.notFound; }
+    if (user.resetPasswordToken === '') { throw errors.expiredToken; }
+    if (user.resetPasswordToken !== resetToken) { throw errors.accessDenied; }
+    if (user.resetPasswordExpires < new Date()) { throw errors.expiredToken; }
     return hashAndSetPassword(user, newPassword);
 }
 

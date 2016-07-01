@@ -48,9 +48,11 @@ export function authenticate(username, password) {
     return dispatch => {
         dispatch(isLoggingIn());
         return fetch(uri, fetchOptions)
-            .then(response => response.json())
+            .then(response => {
+                if (response.status !== 200) { throw new Error(); }
+                return response.json() ;
+            })
             .then(result => {
-                if (result.status !== 200) { throw new Error(); }
                 window.sessionStorage.token = result.token;
                 dispatch(logInSuccess(username, result));
                 dispatch(pushPath('/feeds'));

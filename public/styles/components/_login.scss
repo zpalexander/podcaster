@@ -1,0 +1,54 @@
+/**
+ * _login.scss
+ *
+ * Styles for the login view
+ */
+
+.login {
+    width: 30%;
+    margin: 175px auto;
+    padding: 10px 50px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 1px #C9C9C9;
+
+    h1 {
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        width: 100%;
+        text-align: center;
+    }
+
+    input {
+        display: block;
+        width: 96%;
+    }
+
+    .error {
+        color: red;
+        text-align: center;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    button {
+        display: block;
+        border-radius: 5px;
+        border-radius: 5px;
+        border: 1px outset;
+        width: 120px;
+        height: 30px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 15px auto;
+
+        &:hover {
+            color: white;
+        }
+
+        &:focus {
+            outline:none;
+        }
+    }
+}

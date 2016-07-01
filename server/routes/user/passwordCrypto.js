@@ -29,7 +29,7 @@ function generateResetPasswordTokenAsync() {
 
 
 function signJwt(profile) {
-    return jwt.sign(profile, secret, {expiresIn: '1d'}); //expires in 1 day
+    return jwt.sign(profile, secret.key, {expiresIn: '1d'}); //expires in 1 day
 }
 
 
